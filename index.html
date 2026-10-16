@@ -140,6 +140,80 @@ h3{font-size:18px;margin:18px 0 8px}
 .shareLinksBox small{display:block;color:var(--muted);line-height:1.5;margin-top:3px}
 .cafeBtn{background:#f5df45 !important;color:#3b2f00 !important;border-color:#e8cf2c !important}
 
+
+.quickTitle{font-size:40px;line-height:1.12;margin:8px 0 12px;letter-spacing:-.035em}
+.fourForces{display:flex;justify-content:center;gap:8px;align-items:center;font-size:24px;font-weight:950;margin:16px 0 8px}
+.forceQi{color:var(--qi)}.forceBlood{color:var(--blood)}.forceYin{color:var(--yin)}.forceYang{color:var(--yang)}
+.twoMin{display:inline-block;margin:10px auto 8px;padding:9px 17px;border-radius:999px;background:#151515;color:#fff;font-weight:900;font-size:16px}
+.quickNote{text-align:center;color:var(--muted);margin:8px auto 18px;line-height:1.6}
+.compactForm{margin-top:10px}.startHero{font-size:20px;padding:16px;margin-top:14px}
+.researchTeaser{margin-top:18px;padding:14px 16px;border:1px solid var(--line);border-radius:18px;background:#faf9f6;line-height:1.55}
+.researchTeaser details{margin-top:8px}.researchTeaser summary{cursor:pointer;font-weight:900}
+.compactPurpose{margin-top:12px}.compactDisclaimer{font-size:12px;line-height:1.55;margin-top:16px}
+.friendInviteBanner{padding:13px 15px;margin-bottom:15px;border-radius:16px;background:#edf6ff;border:1px solid #bfd9f4;font-weight:800;line-height:1.55}
+.socialLoopBox,.friendCompareBox{margin-top:18px;padding:18px;border-radius:20px;border:1px solid #cfe0f2;background:#f3f8ff}
+.socialLoopBox strong,.friendCompareBox strong{font-size:18px}.socialLoopBox p{color:var(--muted);line-height:1.55}
+.friendShareBtn{margin-top:10px;font-size:18px}
+.friendCompareGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+.friendPerson{background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px}
+.friendPerson b{display:block;font-size:18px;margin-bottom:6px}
+.friendAxis{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:10px;font-size:12px;text-align:center}
+.friendAxis span{padding:6px 3px;border-radius:10px;background:#f5f4f0}
+.clinicButtons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.clinicButtons a{display:block;text-align:center;text-decoration:none;padding:11px;border-radius:13px;font-weight:900;background:#fff;border:1px solid #e2c8c0;color:#7c3128}
+.serverPending{padding:11px;border-radius:12px;background:#fff8e6;border:1px solid #ecd99b;margin-top:10px}
+@media(max-width:560px){
+  .quickTitle{font-size:34px}.fourForces{font-size:21px}
+  .friendCompareGrid,.clinicButtons{grid-template-columns:1fr}
+}
+
+
+.introCharacterWrap{display:flex;justify-content:center;margin:4px 0 12px}
+.introCharacter{
+  width:148px;height:148px;object-fit:cover;object-position:center center;
+  border-radius:28px;background:#fff;border:5px solid #fff;
+  box-shadow:0 10px 28px rgba(0,0,0,.10);
+}
+.introSpeech{
+  margin:0 auto 14px;max-width:340px;text-align:center;
+  padding:10px 14px;border-radius:16px;background:#fff;
+  border:1px solid #dfe7ef;color:#44515d;font-weight:700;line-height:1.45;
+}
+
+
+/* Final notice + personal history */
+.disclaimer.finalMedicalNotice{
+  font-size:17px !important;
+  line-height:1.75 !important;
+  padding:20px 18px !important;
+  border:2px solid #e6b8aa !important;
+  border-radius:18px;
+  background:#fff4ef !important;
+  color:#4a342f !important;
+}
+.disclaimer.finalMedicalNotice b{font-size:18px}
+.badgeDateNote{
+  text-align:center;font-size:12px;color:var(--muted);margin-top:8px
+}
+.historyBox{
+  margin-top:18px;padding:18px;border:1px solid var(--line);
+  border-radius:20px;background:#faf9f6;
+}
+.historyBox strong{font-size:18px}
+.historyToggle{margin-top:12px}
+.historyList{margin-top:12px;display:grid;gap:10px}
+.historyItem{
+  background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px
+}
+.historyTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.historyType{font-weight:900;font-size:16px}
+.historyDate{font-size:12px;color:var(--muted);white-space:nowrap}
+.historyScores{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:9px}
+.historyScores span{
+  border-radius:10px;padding:7px 4px;text-align:center;background:#f4f2ed;font-size:12px
+}
+.historyEmpty{color:var(--muted);font-size:13px;margin-top:10px}
+
 </style>
 </head>
 <body>
@@ -150,65 +224,63 @@ h3{font-size:18px;margin:18px 0 8px}
   </div>
 
   <section id="intro" class="card">
-    <h1>검사는 정상인데<br>나는 왜 계속 불편할까?</h1>
-    <p class="lead">HANI 4 BODY는 한의학의 <b>기(氣) · 혈(血) · 음(陰) · 양(陽)</b> 관점에서 <b>최근 2주 동안 어디가 충분하고 어디가 허한지</b> 살펴보는 자가 점검 도구입니다.</p>
+    <div id="friendInviteBanner" class="friendInviteBanner hidden"></div>
 
-    <div class="purpose">
-      병원 검사에서 뚜렷한 이상이 발견되지 않았는데도 몸이 계속 불편하거나,
-      치료 후에도 비슷한 증상이 반복·재발한다면 몸 상태를 다른 관점에서 살펴볼 필요가 있을 수 있습니다.
-      이 검사는 그런 분들이 <b>가까운 동네한의원에서 한의학적 평가를 받아볼지 판단하는 참고자료</b>가 되는 것을 목표로 합니다.
+    <div class="introCharacterWrap">
+      <img class="introCharacter" src="assets/intro_character.jpeg" alt="한의원 캐릭터">
     </div>
-
-    <div class="note">
-      <b>100점에 가까울수록 해당 요소가 충분한 상태</b>입니다.<br>
-      낮은 점수는 질병명이 아니라, 현재 그 요소가 상대적으로 허하고 약한 경향을 의미합니다.<br>
-      타고난 체질검사가 아니므로 수면·과로·스트레스·식사·운동·계절에 따라 결과는 달라질 수 있습니다.
+    <div class="introSpeech">2분이면 내 기·혈·음·양 상태를 볼 수 있어요</div>
+    <h1 class="quickTitle">내 몸의 4가지 힘은<br>지금 어떨까?</h1>
+    <div class="fourForces">
+      <span class="forceQi">기(氣)</span><span>·</span>
+      <span class="forceBlood">혈(血)</span><span>·</span>
+      <span class="forceYin">음(陰)</span><span>·</span>
+      <span class="forceYang">양(陽)</span>
     </div>
+    <div class="twoMin">24문항 · 약 2분</div>
+    <p class="quickNote">최근 2주 상태를 보는 검사입니다. <b>타고난 체질검사가 아닙니다.</b></p>
 
-    <div class="formRow">
+    <div class="formRow compactForm">
       <div class="field">
         <label for="ageGroupSelect">연령대</label>
         <select id="ageGroupSelect">
           <option value="">선택하세요</option>
-          <option value="10대">10대</option>
-          <option value="20대">20대</option>
-          <option value="30대">30대</option>
-          <option value="40대">40대</option>
-          <option value="50대">50대</option>
-          <option value="60대">60대</option>
+          <option value="10대">10대</option><option value="20대">20대</option><option value="30대">30대</option>
+          <option value="40대">40대</option><option value="50대">50대</option><option value="60대">60대</option>
           <option value="70대 이상">70대 이상</option>
         </select>
       </div>
       <div class="field">
         <label for="sexSelect">성별</label>
         <select id="sexSelect">
-          <option value="">선택하세요</option>
-          <option value="남성">남성</option>
-          <option value="여성">여성</option>
+          <option value="">선택하세요</option><option value="남성">남성</option><option value="여성">여성</option>
         </select>
       </div>
     </div>
-    <div class="subnote">연령대와 성별을 입력하면, 이 브라우저에 누적된 같은 연령대·성별 결과와 비교해볼 수 있습니다. 공개 서비스로 운영하려면 추후 서버 저장 기능을 붙이면 됩니다.</div>
 
-    <div class="cta" style="margin-top:14px"><b>안내</b><br>이 설문은 의료를 대신할 수 없으며, 건강과 질병에 대한 상담은 가까운 <b>“동네한의원”</b>을 방문하시기 바랍니다.</div>
-<button class="btn" onclick="startTest()">HANI 4 BODY 검사 시작</button>
+    <button class="btn startHero" onclick="startTest()">내 상태 알아보기</button>
 
-    <div class="refs">
+    <div class="researchTeaser">
+      📚 <b>연구에 근거해 개발한 탐색적 자가점검 도구입니다.</b>
       <details>
-        <summary>이 검사를 만들 때 참고한 연구 5편</summary>
+        <summary>이 검사는 어떻게 만들었나요? · 근거 보기</summary>
+        <div class="purpose compactPurpose">
+          HANI 4 BODY는 한의학의 기(氣)·혈(血)·음(陰)·양(陽) 관점에서 최근 상태를 살펴보도록 만든 대중용 자가점검 도구입니다.
+          질병 진단이나 기존 검증 설문을 그대로 복제한 검사는 아닙니다.
+        </div>
         <ol>
           <li>Kim J, Ku B, Kim KH. <b>Validation of the Qi Blood Yin Yang Deficiency Questionnaire on chronic fatigue.</b> Chinese Medicine. 2016. <a href="https://link.springer.com/article/10.1186/s13020-016-0092-y" target="_blank">논문 보기</a></li>
-          <li>Kim J, Kim KH. <b>Protocol for the evaluation and validation of Qi Blood Yin Yang deficiency pattern questionnaire.</b> Integrative Medicine Research. 2015. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5481822/" target="_blank">논문 보기</a></li>
-          <li>Lee S, Park J, Lee H, Kim K. <b>Development and validation of Yin-Deficiency Questionnaire.</b> Am J Chin Med. 2007. <a href="https://pubmed.ncbi.nlm.nih.gov/17265546/" target="_blank">논문 보기</a></li>
-          <li>Zhu Y et al. <b>Development and Validation of the Japanese Version of the Constitution in Chinese Medicine Questionnaire (CCMQ).</b> Kampo Medicine. 2008. <a href="https://www.jstage.jst.go.jp/article/kampomed/59/6/59_6_783/_article/-char/en" target="_blank">논문 보기</a></li>
-          <li>Meng Y et al. <b>Traditional Chinese Medicine Constitution Identification Based on Objective Facial and Tongue Features.</b> 2022. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8983216/" target="_blank">논문 보기</a></li>
+          <li>Kim J, Kim KH. <b>Protocol for the evaluation and validation of Qi Blood Yin Yang deficiency pattern questionnaire.</b> Integr Med Res. 2015. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5481822/" target="_blank">논문 보기</a></li>
+          <li>Lee S et al. <b>Development and validation of Yin-Deficiency Questionnaire.</b> Am J Chin Med. 2007. <a href="https://pubmed.ncbi.nlm.nih.gov/17265546/" target="_blank">논문 보기</a></li>
+          <li>Zhu Y et al. <b>Japanese Version of CCMQ.</b> Kampo Medicine. 2008. <a href="https://www.jstage.jst.go.jp/article/kampomed/59/6/59_6_783/_article/-char/en" target="_blank">논문 보기</a></li>
+          <li>Meng Y et al. <b>TCM Constitution Identification Based on Objective Facial and Tongue Features.</b> 2022. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8983216/" target="_blank">논문 보기</a></li>
         </ol>
-        <p class="muted">HANI 4 BODY는 위 연구들을 참고해 대중용으로 구성한 탐색적 도구이며, 위 논문에 실린 검증 설문을 그대로 복제한 검사는 아닙니다.</p>
       </details>
     </div>
 
-    <div class="disclaimer">
-      새로운 증상, 심한 통증, 호흡곤란, 실신, 지속되는 출혈·발열·체중감소 등 우려되는 증상이 있으면 자가검사보다 의료기관의 적절한 평가를 우선하세요.
+    <div class="disclaimer compactDisclaimer">
+      <b>안내:</b> 이 설문은 의료를 대신할 수 없으며, 건강과 질병에 대한 상담은 가까운 <b>“동네한의원”</b>을 방문하시기 바랍니다.
+      새로운 심한 증상, 호흡곤란, 실신, 지속되는 출혈·발열·체중감소 등은 적절한 의료평가를 우선하세요.
     </div>
   </section>
 
@@ -248,11 +320,17 @@ h3{font-size:18px;margin:18px 0 8px}
       <p class="resultSummary" id="resultSummary"></p>
     </div>
 
-    <div class="compareBox">
-      <strong>내 나이대·성별과 비교</strong>
-      <p class="muted" id="compareIntro" style="margin:8px 0 0;">같은 연령대·성별 결과가 누적되면 비교가 가능합니다.</p>
+    <div class="compareBox hidden" id="populationBox">
+      <strong>내 연령대·성별과 비교</strong>
+      <p class="muted" id="compareIntro" style="margin:8px 0 0;">실제 참여자 통계와 비교합니다.</p>
       <div class="compareGrid" id="compareGrid"></div>
-      <p class="subnote" id="compareFootnote">현재 프로토타입에서는 이 브라우저에 저장된 결과만 누적됩니다.</p>
+      <p class="subnote" id="compareFootnote">집단 통계는 서버에 누적된 익명 결과가 충분할 때 표시됩니다.</p>
+    </div>
+
+    <div class="friendCompareBox hidden" id="friendCompareBox">
+      <strong>👥 친구와 비교</strong>
+      <p class="muted" id="friendCompareIntro"></p>
+      <div class="friendCompareGrid" id="friendCompareGrid"></div>
     </div>
 
     <div class="cta" id="clinicCta"></div>
@@ -267,6 +345,12 @@ h3{font-size:18px;margin:18px 0 8px}
         <div class="shareScore yangS">양(陽) <span id="shareYang"></span></div>
       </div>
       <p id="shareLine"></p>
+    </div>
+
+    <div class="socialLoopBox">
+      <strong>친구는 어떤 상태일까?</strong>
+      <p>내 결과를 보내고 친구가 검사를 마치면 두 사람의 결과를 바로 비교할 수 있습니다.</p>
+      <button class="btn friendShareBtn" onclick="shareFriendChallenge()">👥 친구에게 검사 보내기</button>
     </div>
 
     <button class="btn sub" onclick="restart()">다시 검사하기</button>
@@ -284,12 +368,13 @@ h3{font-size:18px;margin:18px 0 8px}
       </details>
     </div>
 
-    <div class="disclaimer"><b>안내:</b> 이 설문은 의료를 대신할 수 없으며, 건강과 질병에 대한 상담은 가까운 <b>“동네한의원”</b>을 방문하시기 바랍니다.</div>
+    <div class="disclaimer finalMedicalNotice"><b>안내:</b> 이 설문은 의료를 대신할 수 없으며, 건강과 질병에 대한 상담은 가까운 <b>“동네한의원”</b>을 방문하시기 바랍니다.</div>
 
     <div class="resultBadgeSection" id="resultBadgeSection">
       <h3>내 HANI 4 BODY 상태 뱃지</h3>
       <p class="shareHint">이 그림만 공유하거나, HANI 4 BODY 검사 링크만 따로 친구에게 보낼 수 있습니다.</p>
       <img id="resultBadgeImage" class="resultBadgeImage" alt="HANI 4 BODY 결과 뱃지" loading="eager">
+      <div id="badgeDateNote" class="badgeDateNote"></div>
       <div class="shareLinksBox">
         <small>친구에게 검사 자체를 보내려면 아래 앱 주소를 공유하세요.</small>
         <a href="https://hanibyoul.github.io/hani4body/" target="_blank" rel="noopener">🔗 HANI 4 BODY 앱 주소</a>
@@ -305,6 +390,16 @@ h3{font-size:18px;margin:18px 0 8px}
       </div>
       <div class="shareStatus" id="shareStatus"></div>
     </div>
+
+    <div class="historyBox">
+      <strong>🕘 내 지난 검사 기록</strong>
+      <p class="muted" style="margin:6px 0 0;font-size:13px">
+        이 브라우저에 저장된 최근 검사 결과입니다.
+      </p>
+      <button class="btn sub historyToggle" onclick="toggleHistory()">지난 기록 보기</button>
+      <div id="historyList" class="historyList hidden"></div>
+    </div>
+
 
   </section>
 </div>
@@ -343,7 +438,8 @@ const observationQuestions = [
 const symptomOptions = ['전혀 없다','드물다','가끔 있다','자주 있다','거의 항상 있다'];
 
 const typeMap = {
-  '0000':['지금은 풀밸런스 상태','네 가지 힘이 비교적 고르게 유지되고 있습니다.'],
+  'BAL80':['지금은 균형양호 상태','기·혈·음·양이 모두 80점 이상입니다. 전반적으로 좋은 균형을 유지하고 있습니다.'],
+  '0000':['지금은 풀밸런스 상태','기·혈·음·양이 모두 90점 이상인 매우 좋은 상태입니다.'],
   '1000':['지금은 저전력 상태','기운을 쓰고 회복하는 힘이 상대적으로 약한 편입니다.'],
   '0100':['지금은 빈 저장고 상태','혈(血)의 회복·영양 자원이 상대적으로 부족한 편입니다.'],
   '0010':['지금은 기름 부족 상태','음(陰)의 윤택·보호 자원이 상대적으로 부족한 편입니다.'],
@@ -362,6 +458,7 @@ const typeMap = {
 };
 
 const badgeMap = {
+  'BAL80':'assets/badges/balance_good.webp',
   '0000':'assets/badges/fullbalance.webp',
   '1000':'assets/badges/lowpower.webp',
   '0100':'assets/badges/empty_store.webp',
@@ -382,6 +479,11 @@ const badgeMap = {
 
 const APP_URL = 'https://hanibyoul.github.io/hani4body/';
 const CAFE_URL = 'https://cafe.daum.net/k-starmedi/W4sM';
+
+const SUPABASE_URL = '';      // 서버 연결 시 입력
+const SUPABASE_ANON_KEY = ''; // 서버 연결 시 입력
+const PEER_MIN_N = 100;
+
 
 
 let phase='symptom', idx=0, symptomAnswers=[], observationAnswers={}, userAgeGroup='', userSex='', currentResultKey='', currentBadgeUrl='';
@@ -452,77 +554,245 @@ function axisResource(axis){
   return Math.max(0,Math.min(100,Math.round(100-(avg/4*100))));
 }
 function level(score){
-  if(score>=80)return '충분한 편';
-  if(score>=65)return '비교적 양호';
-  if(score>=50)return '다소 부족';
-  if(score>=35)return '부족한 편';
+  if(score>=90)return '매우 충분';
+  if(score>=80)return '양호';
+  if(score>=65)return '다소 부족';
+  if(score>=50)return '부족한 편';
   return '많이 부족';
 }
 function prettyName(key){
   return {qi:'기',blood:'혈',yin:'음',yang:'양'}[key];
 }
 
+
 function getStoredResults(){
-  try{
-    return JSON.parse(localStorage.getItem('hani4body_results_v1') || '[]');
-  }catch(e){
-    return [];
-  }
+  try{return JSON.parse(localStorage.getItem('hani4body_personal_results_v2')||'[]');}
+  catch(e){return [];}
 }
 function saveCurrentResult(record){
-  const data = getStoredResults();
-  data.push(record);
-  localStorage.setItem('hani4body_results_v1', JSON.stringify(data));
-  return data;
+  const data=getStoredResults(); data.push(record);
+  localStorage.setItem('hani4body_personal_results_v2',JSON.stringify(data.slice(-50)));
 }
-function avg(arr){ return arr.length ? Math.round(arr.reduce((a,b)=>a+b,0)/arr.length) : null; }
-function compareWord(diff){
-  if(diff === null) return '';
-  if(diff >= 10) return '평균보다 꽤 높은 편';
-  if(diff >= 4) return '평균보다 약간 높은 편';
-  if(diff > -4) return '평균과 비슷한 편';
-  if(diff > -10) return '평균보다 약간 낮은 편';
-  return '평균보다 꽤 낮은 편';
+function serverReady(){return /^https:\/\//.test(SUPABASE_URL)&&SUPABASE_ANON_KEY.length>20;}
+async function supabaseRequest(path, options={}){
+  const headers=Object.assign({
+    'apikey':SUPABASE_ANON_KEY,
+    'Authorization':'Bearer '+SUPABASE_ANON_KEY,
+    'Content-Type':'application/json'
+  },options.headers||{});
+  return fetch(SUPABASE_URL.replace(/\/$/,'')+path,Object.assign({},options,{headers}));
 }
-function renderComparison(scores){
-  const all = getStoredResults();
-  const group = all.filter(r => r.ageGroup === userAgeGroup && r.sex === userSex);
-  const intro = document.getElementById('compareIntro');
-  const grid = document.getElementById('compareGrid');
-  const foot = document.getElementById('compareFootnote');
+function percentilePhrase(p){
+  if(p===null||p===undefined)return '';
+  const upper=Math.max(1,Math.round(100-p));
+  return `같은 연령대·성별에서 상위 약 ${upper}%`;
+}
+async function submitAndRenderPopulationStats(record){
+  const box=document.getElementById('populationBox');
+  const intro=document.getElementById('compareIntro');
+  const grid=document.getElementById('compareGrid');
+  const foot=document.getElementById('compareFootnote');
 
-  if(group.length < 1){
-    intro.textContent = '아직 같은 연령대·성별 결과가 없습니다.';
-    grid.innerHTML = '';
-    foot.textContent = '현재 프로토타입에서는 이 브라우저에 저장된 결과만 누적됩니다.';
+  box.classList.add('hidden');
+  if(!serverReady()) return;
+
+  try{
+    await supabaseRequest('/rest/v1/hani4body_results',{
+      method:'POST',
+      headers:{'Prefer':'return=minimal'},
+      body:JSON.stringify({
+        age_group:record.ageGroup, sex:record.sex,
+        qi:record.qi,blood:record.blood,yin:record.yin,yang:record.yang
+      })
+    });
+
+    const r=await supabaseRequest('/rest/v1/rpc/hani4body_peer_stats',{
+      method:'POST',
+      body:JSON.stringify({
+        p_age_group:record.ageGroup,p_sex:record.sex,
+        p_qi:record.qi,p_blood:record.blood,p_yin:record.yin,p_yang:record.yang
+      })
+    });
+    if(!r.ok) return;
+
+    const rows=await r.json();
+    const s=Array.isArray(rows)?rows[0]:rows;
+    const n=Number(s?.n||0);
+
+    if(n<PEER_MIN_N) return;
+
+    box.classList.remove('hidden');
+    intro.textContent=`HANI 4 BODY 참여자 중 ${record.ageGroup} ${record.sex} ${n}명과 비교했습니다.`;
+
+    const items=[
+      ['기(氣)','qi',record.qi,s.avg_qi,s.pct_qi],
+      ['혈(血)','blood',record.blood,s.avg_blood,s.pct_blood],
+      ['음(陰)','yin',record.yin,s.avg_yin,s.pct_yin],
+      ['양(陽)','yang',record.yang,s.avg_yang,s.pct_yang]
+    ];
+    grid.innerHTML=items.map(([label,key,mine,mean,pct])=>`<div class="compareMetric">
+      ${label}<b>${mine}</b><em>집단 평균 ${Math.round(Number(mean))}</em>
+      <em>${percentilePhrase(Number(pct))}</em>
+    </div>`).join('');
+
+    foot.textContent='익명으로 누적된 HANI 4 BODY 참여자 중 같은 연령대·성별 결과 기준입니다.';
+  }catch(e){
+    box.classList.add('hidden');
+  }
+}
+
+let referredFriend=null;
+let currentScoresForShare=null;
+
+function parseFriendReferral(){
+  try{
+    const raw=new URLSearchParams(location.search).get('f');
+    if(!raw)return null;
+    const p=raw.split('.');
+    if(p.length!==5)return null;
+    const [type,qi,blood,yin,yang]=p;
+    const nums=[qi,blood,yin,yang].map(Number);
+    if(nums.some(n=>!Number.isFinite(n)||n<0||n>100))return null;
+    return {type,qi:nums[0],blood:nums[1],yin:nums[2],yang:nums[3]};
+  }catch(e){return null;}
+}
+function referralTypeName(type){
+  return typeMap[type]?.[0] || 'HANI 4 BODY 상태';
+}
+function buildFriendUrl(){
+  if(!currentScoresForShare||!currentResultKey)return APP_URL;
+  const s=currentScoresForShare;
+  return `${APP_URL}?f=${encodeURIComponent(currentResultKey)}.${s.qi}.${s.blood}.${s.yin}.${s.yang}`;
+}
+async function shareFriendChallenge(){
+  const url=buildFriendUrl();
+  const myType=document.getElementById('typename').textContent;
+  const text=`내 HANI 4 BODY는 “${myType}”이야. 너도 2분만 해보고 나랑 비교해볼래?`;
+  try{
+    if(navigator.share) await navigator.share({title:'HANI 4 BODY 친구 비교',text,url});
+    else if(navigator.clipboard){await navigator.clipboard.writeText(url);setShareStatus('친구 비교 링크를 복사했습니다.');}
+    else prompt('이 링크를 친구에게 보내세요.',url);
+  }catch(e){}
+}
+function renderFriendComparison(myScores,myKey){
+  const box=document.getElementById('friendCompareBox');
+  if(!referredFriend){box.classList.add('hidden');return;}
+  box.classList.remove('hidden');
+  const friendName=referralTypeName(referredFriend.type);
+  const myName=typeMap[myKey]?.[0]||'내 상태';
+  document.getElementById('friendCompareIntro').textContent=`친구: ${friendName} · 나: ${myName}`;
+  function card(title,s){
+    return `<div class="friendPerson"><b>${title}</b>
+      <div class="friendAxis">
+        <span>기<br><strong>${s.qi}</strong></span><span>혈<br><strong>${s.blood}</strong></span>
+        <span>음<br><strong>${s.yin}</strong></span><span>양<br><strong>${s.yang}</strong></span>
+      </div></div>`;
+  }
+  document.getElementById('friendCompareGrid').innerHTML=card('친구',referredFriend)+card('나',myScores);
+}
+function initReferralUI(){
+  referredFriend=parseFriendReferral();
+  const banner=document.getElementById('friendInviteBanner');
+  if(referredFriend&&banner){
+    banner.classList.remove('hidden');
+    banner.innerHTML=`👥 친구가 <b>${referralTypeName(referredFriend.type)}</b> 결과를 보내왔어요.<br>나도 검사하고 두 결과를 비교해보세요.`;
+  }
+}
+
+
+function formatKoreanDateTime(iso){
+  const d=iso?new Date(iso):new Date();
+  if(Number.isNaN(d.getTime())) return '';
+  const y=d.getFullYear();
+  const m=String(d.getMonth()+1).padStart(2,'0');
+  const day=String(d.getDate()).padStart(2,'0');
+  const hh=String(d.getHours()).padStart(2,'0');
+  const mm=String(d.getMinutes()).padStart(2,'0');
+  return `${y}.${m}.${day} ${hh}:${mm}`;
+}
+
+function formatExamDateShort(iso){
+  const d=iso?new Date(iso):new Date();
+  if(Number.isNaN(d.getTime())) return '';
+  const yy=String(d.getFullYear()).slice(-2);
+  const m=String(d.getMonth()+1).padStart(2,'0');
+  const day=String(d.getDate()).padStart(2,'0');
+  const hh=String(d.getHours()).padStart(2,'0');
+  const mm=String(d.getMinutes()).padStart(2,'0');
+  return `${yy}.${m}.${day} ${hh}:${mm}`;
+}
+function typeKeyFromScores(s){
+  const vals=[Number(s.qi),Number(s.blood),Number(s.yin),Number(s.yang)];
+  if(vals.every(v=>v>=90)) return '0000';
+  if(vals.every(v=>v>=80)) return 'BAL80';
+  const low=x=>x<80?'1':'0';
+  return low(vals[0])+low(vals[1])+low(vals[2])+low(vals[3]);
+}
+function typeNameFromRecord(r){
+  const key=typeKeyFromScores(r);
+  return typeMap[key]?.[0] || 'HANI 4 BODY 상태';
+}
+function renderHistory(){
+  const el=document.getElementById('historyList');
+  const rows=getStoredResults().slice().reverse().slice(0,12);
+  if(!rows.length){
+    el.innerHTML='<div class="historyEmpty">아직 저장된 검사 기록이 없습니다.</div>';
     return;
   }
+  el.innerHTML=rows.map(r=>`
+    <div class="historyItem">
+      <div class="historyTop">
+        <div class="historyType">${typeNameFromRecord(r)}</div>
+        <div class="historyDate">${formatKoreanDateTime(r.timestamp)}</div>
+      </div>
+      <div class="historyScores">
+        <span>기<br><b>${r.qi}</b></span>
+        <span>혈<br><b>${r.blood}</b></span>
+        <span>음<br><b>${r.yin}</b></span>
+        <span>양<br><b>${r.yang}</b></span>
+      </div>
+    </div>`).join('');
+}
+function toggleHistory(){
+  const el=document.getElementById('historyList');
+  const opening=el.classList.contains('hidden');
+  el.classList.toggle('hidden');
+  if(opening) renderHistory();
+}
+async function makeStampedBadge(baseUrl, iso){
+  return new Promise(resolve=>{
+    const img=new Image();
+    img.onload=()=>{
+      const c=document.createElement('canvas');
+      c.width=img.naturalWidth||img.width;
+      c.height=img.naturalHeight||img.height;
+      const ctx=c.getContext('2d');
+      ctx.drawImage(img,0,0,c.width,c.height);
 
-  const averages = {
-    qi: avg(group.map(r=>r.qi)),
-    blood: avg(group.map(r=>r.blood)),
-    yin: avg(group.map(r=>r.yin)),
-    yang: avg(group.map(r=>r.yang)),
-  };
-  intro.textContent = `${userAgeGroup} ${userSex} 결과 ${group.length}건 기준 평균과 비교했습니다.`;
+      const stamp=`검사일 ${formatExamDateShort(iso)}`;
+      const fs=Math.max(18,Math.round(c.width*0.019));
+      const pad=Math.round(c.width*0.014);
+      ctx.font=`700 ${fs}px -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif`;
+      const tw=ctx.measureText(stamp).width;
+      const boxH=fs+pad*1.35;
+      const x=pad;
+      const y=pad;
 
-  const items = [
-    ['기(氣)','qi',scores.qi,averages.qi],
-    ['혈(血)','blood',scores.blood,averages.blood],
-    ['음(陰)','yin',scores.yin,averages.yin],
-    ['양(陽)','yang',scores.yang,averages.yang]
-  ];
-  grid.innerHTML = items.map(([label,key,mine,mean])=>{
-    const diff = mine - mean;
-    const sign = diff>0?'+':'';
-    return `<div class="compareMetric">
-      ${label}
-      <b>${mine}</b>
-      <em>평균 ${mean}</em>
-      <em>${sign}${diff} · ${compareWord(diff)}</em>
-    </div>`;
-  }).join('');
-  foot.textContent = '현재 프로토타입에서는 이 브라우저에 저장된 결과만 누적됩니다. 실제 시민 통계를 만들려면 서버·DB 저장 기능을 붙이면 됩니다.';
+      ctx.fillStyle='rgba(255,255,255,.90)';
+      ctx.fillRect(x,y,tw+pad*2,boxH);
+      ctx.strokeStyle='rgba(35,95,70,.55)';
+      ctx.lineWidth=Math.max(2,Math.round(c.width*.002));
+      ctx.strokeRect(x,y,tw+pad*2,boxH);
+
+      ctx.fillStyle='#234f3d';
+      ctx.textBaseline='middle';
+      ctx.fillText(stamp,x+pad,y+boxH/2);
+
+      resolve(c.toDataURL('image/webp',0.90));
+    };
+    img.onerror=()=>resolve(baseUrl);
+    img.src=baseUrl;
+  });
 }
 
 function finish(){
@@ -532,11 +802,20 @@ function finish(){
     yin:axisResource('yin'),
     yang:axisResource('yang')
   };
-  const low=x=>x<50?'1':'0';
-  const key=low(scores.qi)+low(scores.blood)+low(scores.yin)+low(scores.yang);
+  const vals=[scores.qi,scores.blood,scores.yin,scores.yang];
+  let key;
+  if(vals.every(v=>v>=90)){
+    key='0000';
+  }else if(vals.every(v=>v>=80)){
+    key='BAL80';
+  }else{
+    const low=x=>x<80?'1':'0';
+    key=low(scores.qi)+low(scores.blood)+low(scores.yin)+low(scores.yang);
+  }
   const [name,line]=typeMap[key];
   currentResultKey = key;
   currentBadgeUrl = badgeMap[key];
+  currentScoresForShare = {...scores};
 
   document.getElementById('typename').textContent=name;
   document.getElementById('tagline').textContent=line;
@@ -545,6 +824,9 @@ function finish(){
     document.getElementById(k+'Score').textContent=scores[k];
     document.getElementById(k+'Label').textContent=level(scores[k]);
   });
+
+  // Draw the 4-axis HANI 4 BODY radar chart.
+  drawRadar(scores);
 
   const ranking=Object.entries(scores).sort((a,b)=>b[1]-a[1]);
   const best=ranking[0], weakest=ranking[ranking.length-1], secondWeak=ranking[ranking.length-2];
@@ -582,11 +864,10 @@ function finish(){
   }
 
   function statePhrase(score){
-    const lv = level(score);
-    if(lv === '충분한 편') return '충분한 편';
-    if(lv === '비교적 양호') return '비교적 양호한 편';
-    if(lv === '다소 부족') return '다소 부족한 편';
-    if(lv === '부족한 편') return '부족한 편';
+    if(score>=90) return '매우 충분한 편';
+    if(score>=80) return '양호한 편';
+    if(score>=65) return '다소 부족한 편';
+    if(score>=50) return '부족한 편';
     return '많이 부족한 편';
   }
 
@@ -599,23 +880,29 @@ function finish(){
 
   let summary = '';
 
+  if(currentResultKey==='0000'){
+    summary = '기·혈·음·양 네 가지가 모두 90점 이상입니다. 현재는 네 가지 힘이 매우 충실한 풀밸런스 상태입니다.';
+  }else if(currentResultKey==='BAL80'){
+    summary = '기·혈·음·양 네 가지가 모두 80점 이상입니다. 현재는 전반적으로 좋은 균형을 유지하고 있습니다.';
+  }else{
+
   const allScores = Object.values(scores);
-  const under50 = allScores.filter(v => v < 50).length;
+  const under80 = allScores.filter(v => v < 80).length;
   const under35 = allScores.filter(v => v < 35).length;
 
   const weakPair = pairNames(weakName, secondWeakName);
 
-  if (under50 === 4) {
+  if (under80 === 4) {
     if (under35 >= 2) {
       summary = `기·혈·음·양 네 가지가 모두 부족한 편입니다. 특히 ${weakPair} 점수가 더 낮게 나타나, 전반적인 회복력과 균형을 함께 살펴볼 필요가 있습니다.`;
     } else {
       summary = `기·혈·음·양 네 가지가 모두 부족한 편입니다. 한두 부분만의 문제라기보다, 전반적으로 몸의 여유와 회복력이 떨어진 상태로 볼 수 있습니다.`;
     }
-  } else if (under50 === 3) {
+  } else if (under80 === 3) {
     summary = `${withTopic(bestName)} 비교적 유지되고 있지만, 나머지 세 가지 요소는 부족한 편입니다. 특히 ${weakPair} 점수가 더 낮아 전반적인 균형을 함께 살펴보는 것이 좋겠습니다.`;
-  } else if (under50 === 2) {
+  } else if (under80 === 2) {
     summary = `${withTopic(bestName)} ${bestState}인 반면, ${weakPair} 모두 부족한 편입니다. 두 요소가 함께 허한 경향을 보여 관련된 불편이 같이 나타날 수 있습니다.`;
-  } else if (under50 === 1) {
+  } else if (under80 === 1) {
     summary = `${withTopic(bestName)} ${bestState}이고 다른 요소들도 대체로 유지되고 있지만, ${withTopic(weakName)} ${weakState}입니다. ${weakName} 쪽을 우선 살펴보는 것이 좋겠습니다.`;
   } else if (weakest[1] >= 65) {
     if (Math.abs(best[1] - weakest[1]) <= 8) {
@@ -627,35 +914,43 @@ function finish(){
     summary = `${withTopic(bestName)} ${bestState}이고, ${withTopic(weakName)} ${weakState}입니다. 현재는 큰 허약보다는 요소별 차이를 살펴보는 정도가 적절합니다.`;
   }
 
-  document.getElementById('resultSummary').textContent=summary;
-
-  saveCurrentResult({
-    ageGroup:userAgeGroup, sex:userSex,
-    qi:scores.qi, blood:scores.blood, yin:scores.yin, yang:scores.yang,
-    timestamp: new Date().toISOString()
-  });
-  renderComparison(scores);
-
-  const veryLow=Object.values(scores).filter(v=>v<35).length;
-  const lowCount=Object.values(scores).filter(v=>v<50).length;
-  const cta=document.getElementById('clinicCta');
-
-  if(veryLow>=1 || lowCount>=2){
-    cta.className='cta strong';
-    cta.innerHTML=`<b>🏥 가까운 동네한의원에서 한번 살펴보세요.</b><br>
-    한두 가지 증상만의 문제가 아니라 여러 축의 점수가 낮게 나타났습니다.
-    검사상 큰 이상이 없더라도 불편이 계속되거나 자꾸 재발한다면, 한의원에서 생활상태·한열·수면·소화·설진 등을 함께 살펴보는 한의학적 평가를 받아보는 것도 한 방법입니다.`;
-  }else if(lowCount===1){
-    cta.className='cta';
-    cta.innerHTML=`<b>🌿 한 축이 상대적으로 허하게 나타났습니다.</b><br>
-    불편이 지속되거나 반복된다면 가까운 동네한의원에서 해당 증상과 전반적인 몸 상태를 함께 상담해보세요.`;
-  }else{
-    cta.className='cta';
-    cta.innerHTML=`<b>✅ 현재 네 축은 전반적으로 양호한 편입니다.</b><br>
-    HANI 4 BODY는 현재 상태를 보는 검사이므로, 몇 주 또는 몇 달 뒤 다시 검사해 변화 추이를 비교해보는 것도 좋습니다.`;
   }
 
-  drawRadar(scores);
+  document.getElementById('resultSummary').textContent=summary;
+
+  const resultTimestamp=new Date().toISOString();
+  const resultRecord={
+    ageGroup:userAgeGroup,sex:userSex,qi:scores.qi,blood:scores.blood,yin:scores.yin,yang:scores.yang,
+    timestamp:resultTimestamp
+  };
+  saveCurrentResult(resultRecord);
+  submitAndRenderPopulationStats(resultRecord);
+  renderFriendComparison(scores,key);
+
+  const below80=Object.values(scores).filter(v=>v<80).length;
+  const below65=Object.values(scores).filter(v=>v<65).length;
+  const cta=document.getElementById('clinicCta');
+  if(below65>=1 || below80>=2){
+    cta.className='cta strong';
+    cta.innerHTML=`<b>🏥 비슷한 불편이 반복된다면 가까운 “동네한의원”에서 한번 살펴보세요.</b><br>
+    여러 요소에서 부족 경향이 나타났습니다. 한의원에서 수면·소화·한열·생활상태·설진 등을 함께 살펴보는 한의학적 평가를 받아볼 수 있습니다.
+    <div class="clinicButtons">
+      <a href="https://map.naver.com/p/search/%ED%95%9C%EC%9D%98%EC%9B%90" target="_blank" rel="noopener">네이버지도에서 찾기</a>
+      <a href="https://map.kakao.com/?q=%ED%95%9C%EC%9D%98%EC%9B%90" target="_blank" rel="noopener">카카오맵에서 찾기</a>
+    </div>`;
+  }else if(below80===1){
+    cta.className='cta';
+    cta.innerHTML=`<b>한 가지 요소가 상대적으로 낮게 나타났습니다.</b><br>
+    생활 상태를 먼저 돌아보고, 불편이 지속되거나 반복된다면 가까운 “동네한의원”에서 상담해보세요.
+    <div class="clinicButtons">
+      <a href="https://map.naver.com/p/search/%ED%95%9C%EC%9D%98%EC%9B%90" target="_blank" rel="noopener">네이버지도에서 찾기</a>
+      <a href="https://map.kakao.com/?q=%ED%95%9C%EC%9D%98%EC%9B%90" target="_blank" rel="noopener">카카오맵에서 찾기</a>
+    </div>`;
+  }else{
+    cta.className='cta';
+    cta.innerHTML=`<b>현재는 네 가지 힘이 모두 비교적 양호합니다.</b><br>
+    HANI 4 BODY는 고정된 체질검사가 아니므로 수면·과로·스트레스·식사·운동 등에 따라 결과가 달라질 수 있습니다.`;
+  }
 
   document.getElementById('shareType').textContent=name;
   document.getElementById('shareQi').textContent=scores.qi;
@@ -666,6 +961,11 @@ function finish(){
   const badgeImg = document.getElementById('resultBadgeImage');
   badgeImg.src = currentBadgeUrl;
   badgeImg.alt = name + ' 결과 뱃지';
+  document.getElementById('badgeDateNote').textContent='검사일 '+formatExamDateShort(resultTimestamp);
+  makeStampedBadge(currentBadgeUrl,resultTimestamp).then(stamped=>{
+    currentBadgeUrl=stamped;
+    badgeImg.src=stamped;
+  });
   document.getElementById('shareStatus').textContent = '';
 
   show('result');
@@ -800,6 +1100,8 @@ async function shareResult(){
     catch(e){alert(text);}
   }
 }
+document.addEventListener('DOMContentLoaded',initReferralUI);
+
 function restart(){
   show('intro');
   document.getElementById('stepLabel').textContent='내 몸의 4가지 힘';
