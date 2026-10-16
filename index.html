@@ -293,6 +293,28 @@ h3{font-size:18px;margin:18px 0 8px}
   </section>
 
   <section id="result" class="card hidden">
+    <div class="resultBadgeSection" id="resultBadgeSection">
+      <h3>내 HANI 4 BODY 상태 뱃지</h3>
+      <p class="shareHint">이 그림만 공유하거나, HANI 4 BODY 검사 링크만 따로 친구에게 보낼 수 있습니다.</p>
+      <img id="resultBadgeImage" class="resultBadgeImage" alt="HANI 4 BODY 결과 뱃지" loading="eager">
+      <div id="badgeDateNote" class="badgeDateNote"></div>
+      <div class="shareLinksBox">
+        <small>친구에게 검사 자체를 보내려면 아래 앱 주소를 공유하세요.</small>
+        <a href="https://hanibyoul.github.io/hani4body/" target="_blank" rel="noopener">🔗 HANI 4 BODY 앱 주소</a>
+        <small>한의학 관련 앱을 계속 모아둘 공간입니다.</small>
+        <a href="https://cafe.daum.net/k-starmedi/W4sM" target="_blank" rel="noopener">☕ 다음카페 · 한의학 관련 앱 모음</a>
+      </div>
+
+      <div class="shareActions">
+        <button class="btn" onclick="shareBadgeImage()">🖼️ 결과 그림 공유</button>
+        <button class="btn" onclick="shareAppLink()">🔗 앱 링크 공유</button>
+        <button class="btn cafeBtn" onclick="openCafe()">☕ 다음카페 앱 모음</button>
+        <button class="btn sub" onclick="downloadBadgeImage()">⬇️ 결과 그림 저장</button>
+      </div>
+      <div class="shareStatus" id="shareStatus"></div>
+    </div>
+
+
     <div class="muted">최근 2주 HANI 4 BODY 결과</div>
     <div class="typeLine">
       <div class="type" id="typename"></div>
@@ -369,27 +391,6 @@ h3{font-size:18px;margin:18px 0 8px}
     </div>
 
     <div class="disclaimer finalMedicalNotice"><b>안내:</b> 이 설문은 의료를 대신할 수 없으며, 건강과 질병에 대한 상담은 가까운 <b>“동네한의원”</b>을 방문하시기 바랍니다.</div>
-
-    <div class="resultBadgeSection" id="resultBadgeSection">
-      <h3>내 HANI 4 BODY 상태 뱃지</h3>
-      <p class="shareHint">이 그림만 공유하거나, HANI 4 BODY 검사 링크만 따로 친구에게 보낼 수 있습니다.</p>
-      <img id="resultBadgeImage" class="resultBadgeImage" alt="HANI 4 BODY 결과 뱃지" loading="eager">
-      <div id="badgeDateNote" class="badgeDateNote"></div>
-      <div class="shareLinksBox">
-        <small>친구에게 검사 자체를 보내려면 아래 앱 주소를 공유하세요.</small>
-        <a href="https://hanibyoul.github.io/hani4body/" target="_blank" rel="noopener">🔗 HANI 4 BODY 앱 주소</a>
-        <small>한의학 관련 앱을 계속 모아둘 공간입니다.</small>
-        <a href="https://cafe.daum.net/k-starmedi/W4sM" target="_blank" rel="noopener">☕ 다음카페 · 한의학 관련 앱 모음</a>
-      </div>
-
-      <div class="shareActions">
-        <button class="btn" onclick="shareBadgeImage()">🖼️ 결과 그림 공유</button>
-        <button class="btn" onclick="shareAppLink()">🔗 앱 링크 공유</button>
-        <button class="btn cafeBtn" onclick="openCafe()">☕ 다음카페 앱 모음</button>
-        <button class="btn sub" onclick="downloadBadgeImage()">⬇️ 결과 그림 저장</button>
-      </div>
-      <div class="shareStatus" id="shareStatus"></div>
-    </div>
 
     <div class="historyBox">
       <strong>🕘 내 지난 검사 기록</strong>
