@@ -43,7 +43,10 @@ h3{font-size:18px;margin:18px 0 8px}
   width:100%;text-align:left;padding:15px 14px;border-radius:15px;border:1px solid var(--line);
   background:#fff;font-size:16px;cursor:pointer
 }
-.answer:hover{background:#181818;color:#fff;border-color:#181818}
+@media (hover:hover) and (pointer:fine){
+  .answer:hover{background:#f5f4f0;color:#171717;border-color:#bdb8ae}
+}
+.answer:active{background:#181818;color:#fff;border-color:#181818}
 .help{margin-top:18px;font-size:13px;line-height:1.55;color:var(--muted)}
 .hidden{display:none}
 .typeLine{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px}
@@ -131,6 +134,7 @@ h3{font-size:18px;margin:18px 0 8px}
 .shareActions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
 .shareActions .btn{margin:0}
 .shareActions .wide{grid-column:1/-1}
+.resultBottomShareActions{margin-top:22px}
 .shareStatus{font-size:12px;color:var(--muted);text-align:center;min-height:18px;margin-top:8px}
 @media(max-width:560px){.shareActions{grid-template-columns:1fr}.shareActions .wide{grid-column:auto}}
 
@@ -305,13 +309,6 @@ h3{font-size:18px;margin:18px 0 8px}
         <a href="https://cafe.daum.net/k-starmedi/W4sM" target="_blank" rel="noopener">☕ 다음카페 · 한의학 관련 앱 모음</a>
       </div>
 
-      <div class="shareActions">
-        <button class="btn" onclick="shareBadgeImage()">🖼️ 결과 그림 공유</button>
-        <button class="btn" onclick="shareAppLink()">🔗 앱 링크 공유</button>
-        <button class="btn cafeBtn" onclick="openCafe()">☕ 다음카페 앱 모음</button>
-        <button class="btn sub" onclick="downloadBadgeImage()">⬇️ 결과 그림 저장</button>
-      </div>
-      <div class="shareStatus" id="shareStatus"></div>
     </div>
 
 
@@ -401,6 +398,13 @@ h3{font-size:18px;margin:18px 0 8px}
       <div id="historyList" class="historyList hidden"></div>
     </div>
 
+    <div class="shareActions resultBottomShareActions">
+      <button class="btn" onclick="shareBadgeImage()">🖼️ 결과 그림 공유</button>
+      <button class="btn" onclick="shareAppLink()">🔗 앱 링크 공유</button>
+      <button class="btn cafeBtn" onclick="openCafe()">☕ 다음카페 앱 모음</button>
+      <button class="btn sub" onclick="downloadBadgeImage()">⬇️ 결과 그림 저장</button>
+    </div>
+    <div class="shareStatus" id="shareStatus"></div>
 
   </section>
 </div>
