@@ -82,6 +82,96 @@ h3{font-size:18px;margin:18px 0 8px}
   margin-top:17px;border-radius:20px;padding:18px;line-height:1.65;
   background:#f4efe5;border:1px solid #e6d8bd
 }
+
+.actionPlan{
+  margin-top:16px;
+  border:1px solid #d9e6d9;
+  border-radius:22px;
+  padding:20px;
+  background:linear-gradient(180deg,#fbfff9 0%,#f4f9f2 100%);
+}
+.actionKicker{
+  display:inline-block;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.04em;
+  color:#2f6c48;
+  background:#e8f4e9;
+  border:1px solid #cfe2d1;
+  padding:6px 9px;
+  border-radius:999px;
+}
+.actionPlan h3{
+  margin:10px 0 8px;
+  font-size:22px;
+  line-height:1.35;
+}
+.actionFocus{
+  font-size:15px;
+  line-height:1.65;
+  color:#34463a;
+  margin-bottom:12px;
+}
+.actionFocus b{color:#205f3b}
+.actionList{
+  margin:0;
+  padding:0;
+  list-style:none;
+  counter-reset:hani-action;
+  display:grid;
+  gap:9px;
+}
+.actionList li{
+  counter-increment:hani-action;
+  position:relative;
+  padding:13px 14px 13px 50px;
+  background:#fff;
+  border:1px solid #e3e9df;
+  border-radius:15px;
+  line-height:1.55;
+  font-size:15px;
+}
+.actionList li::before{
+  content:counter(hani-action);
+  position:absolute;
+  left:13px;
+  top:12px;
+  width:26px;
+  height:26px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#286c46;
+  color:#fff;
+  font-weight:900;
+  font-size:13px;
+}
+.actionAxisTag{
+  display:inline-block;
+  margin-right:6px;
+  font-size:11px;
+  font-weight:900;
+  padding:3px 7px;
+  border-radius:999px;
+  vertical-align:1px;
+}
+.actionAxisTag.qi{background:#fff2d6;color:#94620a;border:1px solid #eed39c}
+.actionAxisTag.blood{background:#ffedf1;color:#a2344d;border:1px solid #edc3cc}
+.actionAxisTag.yin{background:#edf3ff;color:#315c9d;border:1px solid #c8d7f0}
+.actionAxisTag.yang{background:#fff0e8;color:#ac4d22;border:1px solid #efc7b2}
+.actionAxisTag.balance{background:#eaf5eb;color:#286643;border:1px solid #cde1cf}
+.actionNote{
+  margin:12px 2px 0;
+  font-size:12px;
+  line-height:1.55;
+  color:var(--muted);
+}
+@media(max-width:560px){
+  .actionPlan{padding:17px}
+  .actionPlan h3{font-size:20px}
+  .actionList li{font-size:14px;padding-left:48px}
+}
 .cta.strong{background:#fff0ed;border-color:#edc2ba}
 .sharecard{margin-top:22px;background:#161616;color:white;border-radius:23px;padding:21px}
 .sharecard .mini{font-size:12px;opacity:.7;letter-spacing:.12em;font-weight:800}
@@ -390,6 +480,14 @@ h3{font-size:18px;margin:18px 0 8px}
       <strong>내 결과 해석</strong>
       <p class="resultSummary" id="resultSummary"></p>
       <div class="muted" id="axisPlainSummary" style="margin-top:10px"></div>
+    </div>
+
+    <div class="actionPlan" id="actionPlan">
+      <div class="actionKicker">🌱 내 점수에 맞춘 생활 가이드</div>
+      <h3>오늘부터 이렇게 해보세요</h3>
+      <div class="actionFocus" id="actionFocus"></div>
+      <ol class="actionList" id="actionList"></ol>
+      <p class="actionNote">한꺼번에 모두 바꾸려고 하지 않아도 됩니다. 오늘 한 가지부터 시작해보세요.</p>
     </div>
 
     <div class="compareBox hidden" id="populationBox">
@@ -884,6 +982,133 @@ function formatExamDateShort(iso){
   const mm=String(d.getMinutes()).padStart(2,'0');
   return `${yy}.${m}.${day} ${hh}:${mm}`;
 }
+
+const lifestyleGuide = {
+  qi:{
+    name:'기(氣)',
+    meaning:'활력과 회복력',
+    tips:[
+      '오늘은 평소보다 잠과 휴식 시간을 조금 더 확보해보세요.',
+      '일을 한꺼번에 몰아서 하기보다 중간중간 짧게 쉬어주세요.',
+      '지칠 때까지 운동하기보다 10~20분 정도 가볍게 걷거나 몸을 풀어보세요.',
+      '며칠은 야근·과로처럼 몸을 더 소모시키는 일을 조금 줄여보세요.',
+      '아침에 몸이 무겁다면 무리하게 끌어올리기보다 천천히 활동을 시작해보세요.'
+    ]
+  },
+  blood:{
+    name:'혈(血)',
+    meaning:'영양과 안정',
+    tips:[
+      '바쁘더라도 식사를 거르지 않도록 해보세요.',
+      '한 끼를 먹더라도 단백질·채소·곡류를 고르게 챙겨보세요.',
+      '피곤한 날에는 늦게까지 버티기보다 충분히 쉬는 쪽을 선택해보세요.',
+      '간식이나 카페인 음료로 끼니를 대신하는 일을 줄여보세요.',
+      '가능하면 식사 시간을 너무 들쭉날쭉하게 하지 말고 일정하게 유지해보세요.'
+    ]
+  },
+  yin:{
+    name:'음(陰)',
+    meaning:'촉촉함과 회복 자원',
+    tips:[
+      '물이나 무카페인 음료를 한꺼번에 많이 마시기보다 하루 동안 나누어 섭취해보세요.',
+      '늦은 밤까지 계속 일하거나 화면을 보는 시간을 조금 줄여보세요.',
+      '실내가 너무 덥거나 건조하다면 온도와 습도를 편안하게 조절해보세요.',
+      '갈증이 날 때는 카페인 음료보다 물이나 무카페인 음료를 먼저 선택해보세요.',
+      '과열된 환경에서 오래 버티기보다 몸이 편안한 온도에서 쉬는 시간을 가져보세요.'
+    ]
+  },
+  yang:{
+    name:'양(陽)',
+    meaning:'온기와 추진력',
+    tips:[
+      '몸이 차게 느껴지는 날에는 따뜻한 음식이나 음료를 편안하게 선택해보세요.',
+      '에어컨이나 찬 환경에 오래 있다면 배·허리·발을 너무 차게 두지 마세요.',
+      '하루 종일 가만히 있기보다 10~20분 정도 가볍게 걷거나 몸을 움직여보세요.',
+      '찬 곳에 오래 머물 때는 얇은 겉옷이나 양말처럼 체온을 지킬 수 있는 준비를 해보세요.',
+      '무리하게 땀을 내기보다 몸이 편안하게 따뜻해지는 정도의 활동을 해보세요.'
+    ]
+  }
+};
+
+const balancedLifestyleTips = [
+  '지금의 수면 리듬과 휴식 시간을 무리 없이 유지해보세요.',
+  '식사를 거르지 않고 물도 하루 동안 나누어 챙겨보세요.',
+  '가벼운 걷기나 스트레칭처럼 꾸준히 할 수 있는 활동을 이어가보세요.'
+];
+
+function buildLifestylePlan(scores){
+  const order=['qi','blood','yin','yang'];
+  const ranked=order
+    .map(k=>({key:k,score:Number(scores[k])}))
+    .sort((a,b)=>a.score-b.score);
+
+  const low=ranked.filter(x=>x.score<70);
+
+  if(!low.length){
+    const weakest=ranked[0];
+    return {
+      focus:`현재 네 축이 모두 70점 이상입니다. 가장 낮은 축은 <b>${lifestyleGuide[weakest.key].name} ${weakest.score}점</b>이지만, 지금은 부족을 채우기보다 좋은 균형을 유지하는 데 초점을 맞춰보세요.`,
+      items:balancedLifestyleTips.map(text=>({axis:'balance',label:'균형 유지',text}))
+    };
+  }
+
+  const first=low[0];
+  const second=low[1];
+  let focus='';
+
+  if(second && Math.abs(first.score-second.score)<=4){
+    focus=`오늘은 <b>${lifestyleGuide[first.key].name} ${first.score}점</b>과 <b>${lifestyleGuide[second.key].name} ${second.score}점</b>을 함께 먼저 챙겨보세요.`;
+  }else{
+    focus=`오늘 가장 먼저 챙길 것은 <b>${lifestyleGuide[first.key].name} ${first.score}점</b> — ${lifestyleGuide[first.key].meaning}입니다.`;
+  }
+
+  const picks=[];
+
+  function addTip(axisKey,tipIndex){
+    const g=lifestyleGuide[axisKey];
+    const text=g.tips[tipIndex % g.tips.length];
+    if(!picks.some(x=>x.text===text)){
+      picks.push({axis:axisKey,label:g.name,text});
+    }
+  }
+
+  if(low.length===1){
+    addTip(first.key,0);
+    addTip(first.key,1);
+    addTip(first.key,2);
+  }else if(low.length===2){
+    addTip(low[0].key,0);
+    addTip(low[1].key,0);
+    addTip(low[0].key,1);
+  }else{
+    // 3개 이상 낮을 때는 가장 낮은 세 축에서 하나씩 뽑아
+    // 행동 항목이 지나치게 많아지지 않도록 한다.
+    addTip(low[0].key,0);
+    addTip(low[1].key,0);
+    addTip(low[2].key,0);
+  }
+
+  while(picks.length<3){
+    addTip(first.key,picks.length);
+  }
+
+  return {focus,items:picks.slice(0,3)};
+}
+
+function renderLifestylePlan(scores){
+  const plan=buildLifestylePlan(scores);
+  const focus=document.getElementById('actionFocus');
+  const list=document.getElementById('actionList');
+  if(!focus || !list) return;
+
+  focus.innerHTML=plan.focus;
+  list.innerHTML=plan.items.map(item=>{
+    const cls=item.axis==='balance'?'balance':item.axis;
+    return `<li><span class="actionAxisTag ${cls}">${item.label}</span>${item.text}</li>`;
+  }).join('');
+}
+
+
 function classifyScores(s){
   const vals=[Number(s.qi),Number(s.blood),Number(s.yin),Number(s.yang)];
 
@@ -1123,6 +1348,8 @@ function finish(){
   document.getElementById('axisPlainSummary').innerHTML=
     ['qi','blood','yin','yang'].map(k=>axisPlain(k,scores[k])).join('<br>');
 
+  // 가장 낮은 축을 우선해, 오늘 바로 해볼 수 있는 생활 행동 3가지만 제안한다.
+  renderLifestylePlan(scores);
 
   const resultTimestamp=new Date().toISOString();
   const resultRecord={
