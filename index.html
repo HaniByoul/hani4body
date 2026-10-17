@@ -4,6 +4,16 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>HANI 4 BODY — 내 몸의 4가지 힘</title>
+<meta name="description" content="최근 2주 동안의 몸 상태를 기(氣)·혈(血)·음(陰)·양(陽) 관점에서 살펴보는 HANI 4 BODY 자가점검입니다." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="HANI 4 BODY — 내 몸의 4가지 힘" />
+<meta property="og:description" content="기(氣)·혈(血)·음(陰)·양(陽), 지금 내 몸의 균형을 약 2분 만에 살펴보세요." />
+<meta property="og:url" content="https://hanibyoul.github.io/hani4body/" />
+<meta property="og:image" content="https://hanibyoul.github.io/hani4body/assets/share-preview.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+
 <style>
 :root{
   --bg:#f7f6f2; --card:#ffffff; --text:#171717; --muted:#74736d; --line:#e8e6df;
@@ -52,6 +62,10 @@ h3{font-size:18px;margin:18px 0 8px}
 .typeLine{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px}
 .type{font-size:31px;line-height:1.25;font-weight:950;margin:0}
 .typeBadge{font-size:13px;padding:7px 10px;border-radius:999px;background:#f2efe8}
+.kakaoHint{margin-top:12px;padding:13px 14px;border-radius:15px;background:#fff8d9;border:1px solid #eadb90;font-size:13px;line-height:1.55;color:#514813}
+.typeBadge.stage1{background:#edf7ef;color:#21633e;border:1px solid #cae5d2}
+.typeBadge.stage2{background:#fff0ed;color:#9c3e31;border:1px solid #edc4bc}
+
 .resultSummary{font-size:18px;line-height:1.7;margin:12px 0 16px}
 .radarwrap{display:flex;justify-content:center;align-items:center;margin:8px 0 2px}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:15px 0 10px}
@@ -301,7 +315,7 @@ h3{font-size:18px;margin:18px 0 8px}
         <summary>이 검사는 어떻게 만들었나요? · 근거 보기</summary>
         <div class="purpose compactPurpose">
           HANI 4 BODY는 한의학의 기(氣)·혈(血)·음(陰)·양(陽) 관점에서 최근 상태를 살펴보도록 만든 대중용 자가점검 도구입니다.
-          질병 진단이나 기존 검증 설문을 그대로 복제한 검사는 아닙니다. 흔하고 중복되는 증상은 영향력을 낮추고, 비교적 특징적인 증상은 조금 더 반영하는 가중 점수 방식을 사용합니다.
+          질병 진단이나 기존 검증 설문을 그대로 복제한 검사는 아닙니다. 흔하고 중복되는 증상은 영향력을 낮추고, 비교적 특징적인 증상은 조금 더 반영하는 가중 점수 방식을 사용합니다. 결과 표현은 16개 기본 패턴을 각 1단계(비교적 가벼움)와 2단계(뚜렷함)로 나눈 32종 방식입니다.
         </div>
         <ol>
           <li>Kim J, Ku B, Kim KH. <b>Validation of the Qi Blood Yin Yang Deficiency Questionnaire on chronic fatigue.</b> Chinese Medicine. 2016. <a href="https://link.springer.com/article/10.1186/s13020-016-0092-y" target="_blank">논문 보기</a></li>
@@ -346,7 +360,7 @@ h3{font-size:18px;margin:18px 0 8px}
     <div class="muted">최근 2주 HANI 4 BODY 결과</div>
     <div class="typeLine">
       <div class="type" id="typename"></div>
-      <span class="typeBadge">현재 상태</span>
+      <span class="typeBadge" id="stageBadge">현재 상태</span>
     </div>
     <p class="lead" id="tagline"></p>
 
@@ -443,6 +457,9 @@ h3{font-size:18px;margin:18px 0 8px}
       <button class="btn cafeBtn" onclick="openCafe()">☕ 다음카페 앱 모음</button>
       <button class="btn sub" onclick="downloadBadgeImage()">⬇️ 결과 그림 저장</button>
     </div>
+    <div class="kakaoHint hidden" id="kakaoShareHint">
+      카카오톡 안에서 열었을 때 휴대폰에 따라 <b>그림+링크 동시 공유</b>가 제한될 수 있습니다. 이 경우 앱이 자동 다운로드하지 않고 <b>링크 공유 → 링크 복사</b> 순서로 안전하게 전환합니다.
+    </div>
     <div class="shareStatus" id="shareStatus"></div>
 
   </section>
@@ -507,43 +524,66 @@ const symptomWeights = [
 
 
 const typeMap = {
-  'BAL80':['지금은 균형양호 상태','기·혈·음·양이 모두 70점 이상으로, 현재 크게 부족한 축은 없습니다.'],
-  '0000':['지금은 풀밸런스 상태','기·혈·음·양이 모두 90점 이상인 매우 좋은 상태입니다.'],
-  '1000':['지금은 저전력 상태','기운을 쓰고 회복하는 힘이 상대적으로 약한 편입니다.'],
-  '0100':['지금은 빈 저장고 상태','혈(血)의 회복·영양 자원이 상대적으로 부족한 편입니다.'],
-  '0010':['지금은 기름 부족 상태','음(陰)의 윤택·보호 자원이 상대적으로 부족한 편입니다.'],
-  '0001':['지금은 예열 필요 상태','양(陽)의 온열·활성 자원이 상대적으로 부족한 편입니다.'],
-  '1100':['지금은 잔량 5% 상태','기(氣)와 혈(血)이 함께 부족해 회복 여력이 떨어진 모습입니다.'],
-  '1010':['지금은 과열 방전 상태','기(氣)와 음(陰)의 여유가 함께 부족한 모습입니다.'],
-  '1001':['지금은 겨울잠 상태','기(氣)와 양(陽)이 함께 부족해 쉽게 지치고 차가워지는 쪽입니다.'],
-  '0110':['지금은 사막 상태','혈(血)과 음(陰)의 회복·윤택 자원이 함께 부족합니다.'],
-  '0101':['지금은 빈 난로 상태','혈(血)과 양(陽)이 함께 부족해 채우고 데우는 힘이 약한 편입니다.'],
-  '0011':['지금은 온도조절 난항 상태','음(陰)과 양(陽)이 함께 약해 온도 균형이 흔들리는 편입니다.'],
-  '1110':['지금은 마른 방전 상태','기(氣)·혈(血)·음(陰) 자원이 함께 떨어져 있습니다.'],
-  '1101':['지금은 저온 방전 상태','기(氣)·혈(血)·양(陽) 자원이 함께 부족한 편입니다.'],
-  '1011':['지금은 체온 난조 상태','기운이 부족하면서 음양의 균형도 함께 흔들립니다.'],
-  '0111':['지금은 자원 고갈 상태','혈(血)·음(陰)·양(陽)의 내부 자원이 전반적으로 부족한 편입니다.'],
-  '1111':['지금은 올다운 상태','기(氣)·혈(血)·음(陰)·양(陽) 네 축이 모두 많이 떨어진 상태입니다.']
+  '0000_1':['지금은 균형양호 상태','기·혈·음·양이 모두 70점 이상으로 전반적으로 비교적 고르게 유지되고 있습니다.'],
+  '0000_2':['지금은 풀밸런스 상태','기·혈·음·양이 모두 90점 이상인 매우 좋은 상태입니다.'],
+  '1000_1':['지금은 충전이 필요한 상태','기(氣)가 조금 낮아 활력과 회복력이 다소 떨어진 편입니다.'],
+  '1000_2':['지금은 저전력 상태','기운을 쓰고 회복하는 힘이 뚜렷하게 부족한 편입니다.'],
+  '0100_1':['지금은 저장고 보충이 필요한 상태','혈(血)의 영양·회복 자원이 조금 부족한 편입니다.'],
+  '0100_2':['지금은 빈 저장고 상태','혈(血)의 회복·영양 자원이 뚜렷하게 부족한 편입니다.'],
+  '0010_1':['지금은 오일 보충이 필요한 상태','음(陰)의 윤택·회복 자원이 조금 부족한 편입니다.'],
+  '0010_2':['지금은 기름 부족 상태','음(陰)의 윤택·보호 자원이 뚜렷하게 부족한 편입니다.'],
+  '0001_1':['지금은 온기 보충이 필요한 상태','양(陽)의 온열·활성 자원이 조금 부족한 편입니다.'],
+  '0001_2':['지금은 예열 필요 상태','양(陽)의 온열·활성 자원이 뚜렷하게 부족한 편입니다.'],
+  '1100_1':['지금은 에너지·영양 보충 필요 상태','기(氣)와 혈(血)이 함께 조금 낮아 에너지와 영양 보충이 필요한 편입니다.'],
+  '1100_2':['지금은 잔량 5% 상태','기(氣)와 혈(血)이 함께 많이 낮아 회복 여력이 뚜렷하게 떨어진 모습입니다.'],
+  '1010_1':['지금은 건조 피로 상태','기(氣)와 음(陰)이 함께 조금 낮아 쉽게 마르고 지치기 쉬운 편입니다.'],
+  '1010_2':['지금은 과열 방전 상태','기(氣)와 음(陰)의 여유가 함께 뚜렷하게 부족한 모습입니다.'],
+  '1001_1':['지금은 활력·온기 저하 상태','기(氣)와 양(陽)이 함께 조금 낮아 힘과 온기가 다소 떨어진 편입니다.'],
+  '1001_2':['지금은 겨울잠 상태','기(氣)와 양(陽)이 함께 부족해 쉽게 지치고 차가워지는 편입니다.'],
+  '0110_1':['지금은 메마름 주의 상태','혈(血)과 음(陰)이 함께 조금 낮아 메마름과 건조감이 나타나기 쉬운 편입니다.'],
+  '0110_2':['지금은 사막 상태','혈(血)과 음(陰)의 회복·윤택 자원이 함께 뚜렷하게 부족합니다.'],
+  '0101_1':['지금은 영양·온기 저하 상태','혈(血)과 양(陽)이 함께 조금 낮아 영양과 온기가 다소 떨어진 편입니다.'],
+  '0101_2':['지금은 빈 난로 상태','혈(血)과 양(陽)이 함께 부족해 채우고 데우는 힘이 약한 편입니다.'],
+  '0011_1':['지금은 온도 균형 흔들림 상태','음(陰)과 양(陽)이 함께 조금 낮아 온도 균형이 다소 흔들리는 편입니다.'],
+  '0011_2':['지금은 온도조절 난항 상태','음(陰)과 양(陽)이 함께 약해 온도 균형이 뚜렷하게 흔들리는 편입니다.'],
+  '1110_1':['지금은 건조·피로 누적 상태','기(氣)·혈(血)·음(陰)이 함께 조금 낮아 건조와 피로가 누적된 편입니다.'],
+  '1110_2':['지금은 마른 방전 상태','기(氣)·혈(血)·음(陰) 자원이 함께 뚜렷하게 떨어져 있습니다.'],
+  '1101_1':['지금은 차고 지친 상태','기(氣)·혈(血)·양(陽)이 함께 조금 낮아 쉽게 지치고 차게 느낄 수 있습니다.'],
+  '1101_2':['지금은 저온 방전 상태','기(氣)·혈(血)·양(陽) 자원이 함께 뚜렷하게 부족한 편입니다.'],
+  '1011_1':['지금은 활력·온도 흔들림 상태','기(氣)·음(陰)·양(陽)이 함께 조금 낮아 활력과 온도감이 흔들릴 수 있습니다.'],
+  '1011_2':['지금은 체온 난조 상태','기운이 부족하면서 음양의 균형도 함께 뚜렷하게 흔들립니다.'],
+  '0111_1':['지금은 회복 자원 부족 상태','혈(血)·음(陰)·양(陽)의 회복 자원이 조금 낮아진 편입니다.'],
+  '0111_2':['지금은 자원 고갈 상태','혈(血)·음(陰)·양(陽)의 내부 자원이 전반적으로 뚜렷하게 부족한 편입니다.'],
+  '1111_1':['지금은 전반적 저하 상태','기(氣)·혈(血)·음(陰)·양(陽)이 전반적으로 조금씩 낮아진 편입니다.'],
+  '1111_2':['지금은 올다운 상태','기(氣)·혈(血)·음(陰)·양(陽) 네 축이 모두 매우 크게 떨어진 상태입니다.']
+};
+
+const legacyTypeNames = {
+  'BAL80':'지금은 균형양호 상태','0000':'지금은 풀밸런스 상태','1000':'지금은 저전력 상태',
+  '0100':'지금은 빈 저장고 상태','0010':'지금은 기름 부족 상태','0001':'지금은 예열 필요 상태',
+  '1100':'지금은 잔량 5% 상태','1010':'지금은 과열 방전 상태','1001':'지금은 겨울잠 상태',
+  '0110':'지금은 사막 상태','0101':'지금은 빈 난로 상태','0011':'지금은 온도조절 난항 상태',
+  '1110':'지금은 마른 방전 상태','1101':'지금은 저온 방전 상태','1011':'지금은 체온 난조 상태',
+  '0111':'지금은 자원 고갈 상태','1111':'지금은 올다운 상태'
 };
 
 const badgeMap = {
-  'BAL80':'assets/badges/balance_good.webp',
-  '0000':'assets/badges/fullbalance.webp',
-  '1000':'assets/badges/lowpower.webp',
-  '0100':'assets/badges/empty_store.webp',
-  '0010':'assets/badges/oil_low.webp',
-  '0001':'assets/badges/preheat.webp',
-  '1100':'assets/badges/five_percent.webp',
-  '1010':'assets/badges/overheat_discharge.webp',
-  '1001':'assets/badges/hibernation.webp',
-  '0110':'assets/badges/desert.webp',
-  '0101':'assets/badges/empty_furnace.webp',
-  '0011':'assets/badges/temp_control.webp',
-  '1110':'assets/badges/dry_discharge.webp',
-  '1101':'assets/badges/cold_discharge.webp',
-  '1011':'assets/badges/temp_chaos.webp',
-  '0111':'assets/badges/resource_depleted.webp',
-  '1111':'assets/badges/all_down.webp'
+  '0000_1':'assets/badges/stage1_0000.webp','0000_2':'assets/badges/fullbalance.webp',
+  '1000_1':'assets/badges/stage1_1000.webp','1000_2':'assets/badges/lowpower.webp',
+  '0100_1':'assets/badges/stage1_0100.webp','0100_2':'assets/badges/empty_store.webp',
+  '0010_1':'assets/badges/stage1_0010.webp','0010_2':'assets/badges/oil_low.webp',
+  '0001_1':'assets/badges/stage1_0001.webp','0001_2':'assets/badges/preheat.webp',
+  '1100_1':'assets/badges/stage1_1100.webp','1100_2':'assets/badges/five_percent.webp',
+  '1010_1':'assets/badges/stage1_1010.webp','1010_2':'assets/badges/overheat_discharge.webp',
+  '1001_1':'assets/badges/stage1_1001.webp','1001_2':'assets/badges/hibernation.webp',
+  '0110_1':'assets/badges/stage1_0110.webp','0110_2':'assets/badges/desert.webp',
+  '0101_1':'assets/badges/stage1_0101.webp','0101_2':'assets/badges/empty_furnace.webp',
+  '0011_1':'assets/badges/stage1_0011.webp','0011_2':'assets/badges/temp_control.webp',
+  '1110_1':'assets/badges/stage1_1110.webp','1110_2':'assets/badges/dry_discharge.webp',
+  '1101_1':'assets/badges/stage1_1101.webp','1101_2':'assets/badges/cold_discharge.webp',
+  '1011_1':'assets/badges/stage1_1011.webp','1011_2':'assets/badges/temp_chaos.webp',
+  '0111_1':'assets/badges/stage1_0111.webp','0111_2':'assets/badges/resource_depleted.webp',
+  '1111_1':'assets/badges/stage1_1111.webp','1111_2':'assets/badges/all_down.webp'
 };
 
 const APP_URL = 'https://hanibyoul.github.io/hani4body/';
@@ -731,50 +771,70 @@ function parseFriendReferral(){
   }catch(e){return null;}
 }
 function referralTypeName(type){
-  return typeMap[type]?.[0] || 'HANI 4 BODY 상태';
+  return typeMap[type]?.[0] || legacyTypeNames[type] || 'HANI 4 BODY 상태';
 }
 function buildFriendUrl(){
   if(!currentScoresForShare||!currentResultKey)return APP_URL;
   const s=currentScoresForShare;
   return `${APP_URL}?f=${encodeURIComponent(currentResultKey)}.${s.qi}.${s.blood}.${s.yin}.${s.yang}`;
 }
-async function shareFriendChallenge(){
-  const url=APP_URL;
-  const myType=document.getElementById('typename').textContent;
-  const text=`내 HANI 4 BODY 상태는 “${myType}”입니다.\n나도 검사하기`;
+function isKakaoInApp(){
+  return /KAKAOTALK/i.test(navigator.userAgent||'');
+}
+async function copyShareLink(url){
   try{
-    const file=await badgeFile();
-    const data={
-      files:[file],
-      title:'HANI 4 BODY 내 상태',
-      text,
-      url
-    };
-
-    if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
-      await navigator.share(data);
-      setShareStatus('내 상태 뱃지 그림과 앱 링크 공유창을 열었습니다.');
-      return;
+    if(navigator.clipboard && window.isSecureContext){
+      await navigator.clipboard.writeText(url); return true;
     }
+  }catch(e){}
+  try{
+    const ta=document.createElement('textarea');
+    ta.value=url; ta.setAttribute('readonly','');
+    ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    const ok=document.execCommand('copy'); ta.remove(); return ok;
+  }catch(e){return false;}
+}
+async function shareResultSafely({friend=false}={}){
+  const url=friend?buildFriendUrl():APP_URL;
+  const myType=document.getElementById('typename').textContent;
+  const text=friend
+    ? `내 HANI 4 BODY 상태는 “${myType}”입니다. 나도 검사하고 결과를 비교해보세요.`
+    : `내 HANI 4 BODY 상태는 “${myType}”입니다. 나도 검사하기`;
+  let file=null;
+  try{ file=await badgeFile(); }catch(e){}
 
-    // 파일+링크 동시 공유가 안 되는 브라우저에서는
-    // 뱃지는 저장하고 앱 링크는 복사합니다.
-    downloadBadgeImage();
-    if(navigator.clipboard){
-      await navigator.clipboard.writeText(url);
-      setShareStatus('이 브라우저에서는 그림과 링크를 함께 보낼 수 없어, 뱃지는 저장하고 앱 링크는 복사했습니다.');
-    }else{
-      prompt('앱 링크를 복사해 친구에게 보내세요.',url);
-    }
-  }catch(e){
-    if(navigator.clipboard){
+  // 1순위: 운영체제/브라우저가 이미지 파일 공유를 실제로 지원하면 그림+링크를 함께 시도.
+  if(navigator.share && file){
+    let canFile=true;
+    try{ if(navigator.canShare) canFile=navigator.canShare({files:[file]}); }catch(e){canFile=false;}
+    if(canFile){
       try{
-        await navigator.clipboard.writeText(url);
-        setShareStatus('뱃지 공유를 열지 못해 앱 링크를 복사했습니다. 아래 “결과 그림 저장”도 이용해 주세요.');
-      }catch(err){}
+        await navigator.share({files:[file],title:'HANI 4 BODY 내 상태',text,url});
+        setShareStatus('상태 뱃지 그림과 앱 링크 공유창을 열었습니다.');
+        return;
+      }catch(e){ if(e?.name==='AbortError') return; }
     }
   }
+
+  // 2순위: 카카오톡 인앱을 포함해 파일 공유가 제한되면 링크 공유창을 시도.
+  if(navigator.share){
+    try{
+      await navigator.share({title:'HANI 4 BODY',text,url});
+      setShareStatus(isKakaoInApp()
+        ? '카카오톡 안에서 그림 파일 공유가 제한되어 앱 링크 공유창을 열었습니다.'
+        : '그림 파일 공유가 제한되어 앱 링크 공유창을 열었습니다.');
+      return;
+    }catch(e){ if(e?.name==='AbortError') return; }
+  }
+
+  // 3순위: 자동 다운로드하지 않고 링크만 복사. 그림 저장은 사용자가 별도 버튼으로 선택.
+  const copied=await copyShareLink(url);
+  setShareStatus(copied
+    ? (isKakaoInApp()?'카카오톡 인앱의 공유 제한으로 앱 링크를 복사했습니다. 필요하면 “결과 그림 저장”을 눌러 그림을 따로 보내세요.':'앱 링크를 복사했습니다.')
+    : '공유 기능을 열 수 없습니다. 아래 앱 주소를 길게 눌러 복사해 주세요.');
 }
+async function shareFriendChallenge(){ return shareResultSafely({friend:true}); }
 function renderFriendComparison(myScores,myKey){
   const box=document.getElementById('friendCompareBox');
   if(!referredFriend){box.classList.add('hidden');return;}
@@ -793,6 +853,8 @@ function renderFriendComparison(myScores,myKey){
 }
 function initReferralUI(){
   referredFriend=parseFriendReferral();
+  const kh=document.getElementById('kakaoShareHint');
+  if(kh && isKakaoInApp()) kh.classList.remove('hidden');
   const banner=document.getElementById('friendInviteBanner');
   if(referredFriend&&banner){
     banner.classList.remove('hidden');
@@ -822,32 +884,33 @@ function formatExamDateShort(iso){
   const mm=String(d.getMinutes()).padStart(2,'0');
   return `${yy}.${m}.${day} ${hh}:${mm}`;
 }
-function typeKeyFromScores(s){
+function classifyScores(s){
   const vals=[Number(s.qi),Number(s.blood),Number(s.yin),Number(s.yang)];
-  if(vals.every(v=>v>=90)) return '0000';
-  if(vals.every(v=>v>=70)) return 'BAL80';
 
-  const low=x=>x<70?'1':'0';
-  let key=low(vals[0])+low(vals[1])+low(vals[2])+low(vals[3]);
+  // 부족축이 없는 경우: 70점 이상은 1단계 균형양호, 90점 이상은 2단계 풀밸런스.
+  if(vals.every(v=>v>=90)) return {pattern:'0000',stage:2,key:'0000_2',lowAvg:null,minLow:null};
+  if(vals.every(v=>v>=70)) return {pattern:'0000',stage:1,key:'0000_1',lowAvg:null,minLow:null};
 
-  // '올다운'은 매우 심한 경우에만 사용:
-  // 네 축이 모두 40점 이하이고, 네 축 평균이 35점 미만일 때만
-  if(key==='1111'){
-    const mean=vals.reduce((a,b)=>a+b,0)/4;
-    const isAllDown=vals.every(v=>v<=40) && mean<35;
+  const bits=vals.map(v=>v<70?'1':'0');
+  const pattern=bits.join('');
+  const lowVals=vals.filter(v=>v<70);
+  const lowAvg=lowVals.reduce((a,b)=>a+b,0)/lowVals.length;
+  const minLow=Math.min(...lowVals);
 
-    // 위 조건이 아니면 과도한 '올다운' 표현을 피하고
-    // 가장 낮은 두 축의 기존 조합형으로 표현
-    if(!isAllDown){
-      const order=vals.map((v,i)=>({v,i})).sort((a,b)=>a.v-b.v);
-      const bits=['0','0','0','0'];
-      bits[order[0].i]='1';
-      bits[order[1].i]='1';
-      key=bits.join('');
-    }
+  // 올다운은 사용자가 정한 매우 엄격한 기준에서만 표시한다.
+  if(pattern==='1111'){
+    const overallAvg=vals.reduce((a,b)=>a+b,0)/4;
+    const isAllDown=vals.every(v=>v<=40) && overallAvg<35;
+    return {pattern,stage:isAllDown?2:1,key:`1111_${isAllDown?2:1}`,lowAvg,minLow};
   }
-  return key;
+
+  // 나머지 15개 패턴: 부족축 평균과 최저축으로 가벼움/뚜렷함을 구분.
+  // 1단계: 부족축 평균 55~69점이며 최저축 45점 이상.
+  // 2단계: 부족축 평균 55점 미만 또는 최저축 45점 미만.
+  const stage=(lowAvg<55 || minLow<45)?2:1;
+  return {pattern,stage,key:`${pattern}_${stage}`,lowAvg,minLow};
 }
+function typeKeyFromScores(s){ return classifyScores(s).key; }
 function typeNameFromRecord(r){
   const key=typeKeyFromScores(r);
   return typeMap[key]?.[0] || 'HANI 4 BODY 상태';
@@ -908,7 +971,7 @@ async function makeStampedBadge(baseUrl, iso){
       ctx.textBaseline='middle';
       ctx.fillText(stamp,x+pad,y+boxH/2);
 
-      resolve(c.toDataURL('image/webp',0.90));
+      resolve(c.toDataURL('image/png'));
     };
     img.onerror=()=>resolve(baseUrl);
     img.src=baseUrl;
@@ -923,7 +986,8 @@ function finish(){
     yang:axisResource('yang')
   };
   const vals=[scores.qi,scores.blood,scores.yin,scores.yang];
-  const key=typeKeyFromScores(scores);
+  const resultClass=classifyScores(scores);
+  const key=resultClass.key;
   const [name,line]=typeMap[key];
   currentResultKey = key;
   currentBadgeUrl = badgeMap[key];
@@ -931,6 +995,9 @@ function finish(){
 
   document.getElementById('typename').textContent=name;
   document.getElementById('tagline').textContent=line;
+  const stageBadge=document.getElementById('stageBadge');
+  stageBadge.textContent=resultClass.stage===1?'1단계 · 비교적 가벼움':'2단계 · 뚜렷함';
+  stageBadge.className='typeBadge '+(resultClass.stage===1?'stage1':'stage2');
 
   ['qi','blood','yin','yang'].forEach(k=>{
     document.getElementById(k+'Score').textContent=scores[k];
@@ -992,10 +1059,10 @@ function finish(){
 
   let summary = '';
 
-  if(currentResultKey==='0000'){
+  if(currentResultKey==='0000_2'){
     summary = '기·혈·음·양 네 가지가 모두 90점 이상입니다. 현재는 네 가지 힘이 매우 충실한 풀밸런스 상태입니다.';
-  }else if(currentResultKey==='BAL80'){
-    summary = '기·혈·음·양 네 가지가 모두 70점 이상입니다. 뚜렷하게 부족한 축은 없으며, 70점대가 있다면 생활상태에 따라 조금 흔들릴 수 있는 정도로 봅니다.';
+  }else if(currentResultKey==='0000_1'){
+    summary = '기·혈·음·양 네 가지가 모두 70점 이상입니다. 현재는 크게 부족한 축 없이 전반적으로 비교적 고른 1단계 균형양호 상태입니다.';
   }else{
 
   const allScores = Object.values(scores);
@@ -1026,6 +1093,13 @@ function finish(){
     summary = `${withTopic(bestName)} ${bestState}이고, ${withTopic(weakName)} ${weakState}입니다. 현재는 큰 허약보다는 요소별 차이를 살펴보는 정도가 적절합니다.`;
   }
 
+  }
+
+  if(currentResultKey!=='0000_1' && currentResultKey!=='0000_2'){
+    const stageSentence=resultClass.stage===1
+      ? ' 현재는 같은 패턴 안에서도 비교적 가벼운 1단계에 해당합니다.'
+      : ' 현재는 같은 패턴 안에서 부족 경향이 더 뚜렷한 2단계에 해당합니다.';
+    summary += stageSentence;
   }
 
   document.getElementById('resultSummary').textContent=summary;
@@ -1158,45 +1232,46 @@ function setShareStatus(msg){
 }
 
 async function badgeFile(){
-  const response = await fetch(currentBadgeUrl, {cache:'no-store'});
-  if(!response.ok) throw new Error('이미지 불러오기 실패');
-  const blob = await response.blob();
-  const fileName = `HANI4BODY_${currentResultKey || 'result'}.png`;
-  return new File([blob], fileName, {type: blob.type || 'image/png'});
+  // 현재 뱃지는 WebP/data URL일 수 있으므로, 공유 호환성이 높은 PNG로 변환한다.
+  const img = new Image();
+  img.decoding = 'async';
+
+  const loaded = new Promise((resolve,reject)=>{
+    img.onload=()=>resolve();
+    img.onerror=()=>reject(new Error('이미지 불러오기 실패'));
+  });
+
+  img.src=currentBadgeUrl;
+  await loaded;
+
+  const canvas=document.createElement('canvas');
+  canvas.width=img.naturalWidth || img.width;
+  canvas.height=img.naturalHeight || img.height;
+  const ctx=canvas.getContext('2d');
+  ctx.drawImage(img,0,0,canvas.width,canvas.height);
+
+  const blob=await new Promise((resolve,reject)=>{
+    canvas.toBlob(b=>b?resolve(b):reject(new Error('PNG 변환 실패')),'image/png',0.95);
+  });
+
+  const fileName=`HANI4BODY_${currentResultKey || 'result'}.png`;
+  return new File([blob],fileName,{type:'image/png'});
 }
 
-async function shareBadgeImage(){
-  try{
-    const file = await badgeFile();
-    const data = {files:[file], title:'HANI 4 BODY 결과'};
-    if(navigator.share && navigator.canShare && navigator.canShare(data)){
-      await navigator.share(data);
-      setShareStatus('결과 그림 공유창을 열었습니다.');
-      return;
-    }
-    downloadBadgeImage();
-    setShareStatus('이 브라우저는 그림 직접 공유를 지원하지 않아 그림을 저장했습니다. 저장된 그림을 SNS에서 올려주세요.');
-  }catch(e){
-    setShareStatus('그림 공유를 열지 못했습니다. 아래 “결과 그림 저장”을 이용해 주세요.');
-  }
-}
+async function shareBadgeImage(){ return shareResultSafely({friend:false}); }
 
 async function shareAppLink(){
-  const url = APP_URL;
-  const text = 'HANI 4 BODY — 내 몸의 기(氣)·혈(血)·음(陰)·양(陽) 상태를 확인해보세요.';
+  const url=APP_URL;
+  const text='HANI 4 BODY — 내 몸의 기(氣)·혈(血)·음(陰)·양(陽) 상태를 확인해보세요.';
   try{
     if(navigator.share){
-      await navigator.share({title:'HANI 4 BODY', text, url});
-      setShareStatus('앱 링크 공유창을 열었습니다.');
-    }else if(navigator.clipboard){
-      await navigator.clipboard.writeText(url);
-      setShareStatus('앱 링크를 클립보드에 복사했습니다.');
-    }else{
-      prompt('이 링크를 복사해 친구에게 보내세요.', url);
+      await navigator.share({title:'HANI 4 BODY',text,url});
+      setShareStatus('앱 링크 공유창을 열었습니다.'); return;
     }
-  }catch(e){}
+  }catch(e){ if(e?.name==='AbortError') return; }
+  const copied=await copyShareLink(url);
+  setShareStatus(copied?'앱 링크를 클립보드에 복사했습니다.':'앱 주소를 길게 눌러 복사해 주세요.');
 }
-
 
 function openCafe(){
   window.open(CAFE_URL, '_blank', 'noopener');
