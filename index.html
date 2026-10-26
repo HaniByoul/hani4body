@@ -78,6 +78,156 @@ h3{font-size:18px;margin:18px 0 8px}
 .yang{background:#fff1ea;border-color:#f0c3ad}.yang b,.yang small{color:#b64c1e}
 .interpret{background:#faf9f6;border:1px solid var(--line);border-radius:20px;padding:18px;margin-top:14px}
 .interpret strong{font-size:17px}
+
+.foodGuide{
+  margin-top:16px;
+  border:1px solid #eadfca;
+  border-radius:22px;
+  padding:20px;
+  background:linear-gradient(180deg,#fffdf7 0%,#fbf7ee 100%);
+}
+.foodKicker{
+  display:inline-block;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.04em;
+  color:#7b5724;
+  background:#f7ecd4;
+  border:1px solid #ead5aa;
+  padding:6px 9px;
+  border-radius:999px;
+}
+.foodGuide h3{
+  margin:10px 0 8px;
+  font-size:22px;
+  line-height:1.35;
+}
+.foodFocus{
+  font-size:15px;
+  line-height:1.65;
+  color:#4c4438;
+  margin-bottom:13px;
+}
+.foodFocus b{color:#694b1e}
+
+.foodSubhead{
+  margin:14px 0 8px;
+  font-size:14px;
+  font-weight:950;
+  color:#5b4320;
+}
+.foodSubheadAlt{
+  margin-top:18px;
+  color:#655d52;
+}
+
+.foodGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.foodCard{
+  background:#fff;
+  border:1px solid #eadfce;
+  border-radius:17px;
+  padding:14px 12px;
+  min-height:124px;
+}
+.foodName{
+  font-size:18px;
+  font-weight:950;
+  margin-bottom:7px;
+}
+.foodTags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin-bottom:8px;
+}
+.foodTag{
+  display:inline-block;
+  padding:3px 7px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:900;
+}
+.foodTag.qi{background:#fff2d6;color:#94620a;border:1px solid #eed39c}
+.foodTag.blood{background:#ffedf1;color:#a2344d;border:1px solid #edc3cc}
+.foodTag.yin{background:#edf3ff;color:#315c9d;border:1px solid #c8d7f0}
+.foodTag.yang{background:#fff0e8;color:#ac4d22;border:1px solid #efc7b2}
+.foodReason{
+  font-size:12px;
+  line-height:1.5;
+  color:#6d665d;
+}
+.foodNote{
+  margin:12px 2px 0;
+  font-size:12px;
+  line-height:1.55;
+  color:var(--muted);
+}
+.foodEvidence{
+  margin-top:12px;
+  border-top:1px dashed #dccdac;
+  padding-top:10px;
+}
+.foodEvidence summary{
+  cursor:pointer;
+  font-weight:900;
+  color:#66502b;
+  font-size:13px;
+}
+.foodEvidenceItem{
+  margin-top:10px;
+  padding:11px 12px;
+  border-radius:13px;
+  background:#fff;
+  border:1px solid #eee4d2;
+  font-size:12px;
+  line-height:1.6;
+  color:#5d574e;
+}
+.foodEvidenceItem b{font-size:13px;color:#38332d}
+.foodEvidenceItem a{
+  display:inline-block;
+  margin:5px 8px 0 0;
+  color:#245fa5;
+  font-weight:800;
+  text-decoration:none;
+}
+.foodEvidenceItem a:hover{text-decoration:underline}
+.foodCaution{
+  margin-top:5px;
+  color:#8a5b31;
+}
+.foodMethod{
+  margin-top:11px;
+  padding:11px 13px;
+  background:#fff;
+  border-radius:14px;
+  border:1px solid #ece3d5;
+  font-size:13px;
+  line-height:1.6;
+}
+.foodBalanceGrid{
+  display:grid;
+  gap:9px;
+}
+.foodBalanceItem{
+  background:#fff;
+  border:1px solid #e7dfd2;
+  border-radius:14px;
+  padding:12px 13px;
+  font-size:14px;
+  line-height:1.55;
+}
+@media(max-width:620px){
+  .foodGuide{padding:17px}
+  .foodGuide h3{font-size:20px}
+  .foodGrid{grid-template-columns:1fr}
+  .foodCard{min-height:auto}
+}
+
 .cta{
   margin-top:17px;border-radius:20px;padding:18px;line-height:1.65;
   background:#f4efe5;border:1px solid #e6d8bd
@@ -357,8 +507,8 @@ h3{font-size:18px;margin:18px 0 8px}
     <div class="introCharacterWrap">
       <img class="introCharacter" src="assets/intro_character.jpeg" alt="한의원 캐릭터">
     </div>
-    <div class="introSpeech">2분이면 내 기·혈·음·양 상태를 볼 수 있어요</div>
-    <h1 class="quickTitle">내 몸의 4가지 힘은<br>지금 어떨까?</h1>
+    <div class="introSpeech">나는 32가지 컨디션 중 어디에 속할까요?</div>
+    <h1 class="quickTitle">요즘 내 몸,<br>얼마나 괜찮을까?</h1>
     <div class="fourForces">
       <span class="forceQi">기(氣)</span><span>·</span>
       <span class="forceBlood">혈(血)</span><span>·</span>
@@ -366,7 +516,7 @@ h3{font-size:18px;margin:18px 0 8px}
       <span class="forceYang">양(陽)</span>
     </div>
     <div class="twoMin">24문항 · 약 2분</div>
-    <p class="quickNote">최근 2주 상태를 보는 검사입니다. <b>타고난 체질검사가 아닙니다.</b></p>
+    <p class="quickNote">2분이면 <b>기·혈·음·양 그래프</b>, <b>생활 가이드</b>, <b>맞춤 식재료</b>까지 알려드려요.</p>
 
     <details class="forceExplain">
       <summary>기·혈·음·양이란?</summary>
@@ -397,7 +547,7 @@ h3{font-size:18px;margin:18px 0 8px}
       </div>
     </div>
 
-    <button class="btn startHero" onclick="startTest()">내 상태 알아보기</button>
+    <button class="btn startHero" onclick="startTest()">내 몸 상태 알아보기 →</button>
 
     <div class="researchTeaser">
       📚 <b>연구에 근거해 개발한 탐색적 자가점검 도구입니다.</b>
@@ -483,6 +633,24 @@ h3{font-size:18px;margin:18px 0 8px}
       <div class="actionFocus" id="actionFocus"></div>
       <ol class="actionList" id="actionList"></ol>
       <p class="actionNote">한꺼번에 모두 바꾸려고 하지 않아도 됩니다. 오늘 한 가지부터 시작해보세요.</p>
+    </div>
+
+    <div class="foodGuide" id="foodGuide">
+      <div class="foodKicker">🍚 내 점수에 맞춘 식재료 가이드</div>
+      <h3 id="foodGuideTitle">오늘 식사에 이런 식재료를 활용해볼 수 있어요</h3>
+      <div class="foodFocus" id="foodFocus"></div>
+      
+      <div class="foodSubhead">먼저 골라보세요</div>
+      <div class="foodGrid" id="foodGridPrimary"></div>
+      <div class="foodSubhead foodSubheadAlt">다른 선택도 있어요</div>
+      <div class="foodGrid" id="foodGridAlternate"></div>
+
+      <div class="foodMethod" id="foodMethod"></div>
+      <p class="foodNote">전통 식치·약선 분류와 문헌 검토 자료를 바탕으로 한 참고용 안내입니다. 특정 질환의 치료식이나 현대 의학적 임상효과를 의미하지 않습니다.</p>
+      <details class="foodEvidence" id="foodEvidenceDetails">
+        <summary>추천 기준과 근거 보기</summary>
+        <div id="foodEvidenceList"></div>
+      </details>
     </div>
 
     <div class="interpret">
@@ -1110,6 +1278,195 @@ function renderLifestylePlan(scores){
 }
 
 
+
+const foodEvidenceDb = [{"id":"FY-001","name":"호박","tags":["qi"],"effect":"補中益気","institutionUrl":"https://www.npoany.org/ingredient/detail_26.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"","sourceLink":"직접","category":"채소·뿌리","basePriority":5},{"id":"FY-002","name":"고구마","tags":["qi","yang"],"effect":"補気 / 強腎陽","institutionUrl":"https://www.npoany.org/ingredient/detail_45.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"양은 強腎陽의 관련 분류이며 補陽 자체는 아님","sourceLink":"혼합","category":"채소·뿌리","basePriority":5},{"id":"FY-003","name":"감자","tags":["qi"],"effect":"健脾益気","institutionUrl":"https://www.npoany.org/ingredient/detail_54.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"감자는 신대륙 작물: 전근대 식재료 명칭과 일치 여부 검토.","sourceLink":"직접","category":"채소·뿌리","basePriority":5},{"id":"FY-004","name":"표고버섯","tags":["qi"],"effect":"補気益腎","institutionUrl":"https://www.npoany.org/ingredient/detail_51.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"","sourceLink":"직접","category":"채소·뿌리","basePriority":5},{"id":"FY-005","name":"가다랑어","tags":["qi","blood"],"effect":"補気益血","institutionUrl":"https://www.npoany.org/ingredient/detail_23.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"","sourceLink":"직접","category":"수산물","basePriority":2},{"id":"FY-006","name":"문어","tags":["qi","blood"],"effect":"補気益血","institutionUrl":"https://www.npoany.org/ingredient/detail_63.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"","sourceLink":"직접","category":"수산물","basePriority":2},{"id":"FY-007","name":"대구","tags":["qi","blood"],"effect":"補益気血","institutionUrl":"https://www.npoany.org/ingredient/detail_66.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"","sourceLink":"직접","category":"수산물","basePriority":5},{"id":"FY-008","name":"방어","tags":["qi","blood","yin"],"effect":"補気養血 / 滋陰","institutionUrl":"https://www.npoany.org/ingredient/detail_89.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"","sourceLink":"직접","category":"수산물","basePriority":2},{"id":"FY-009","name":"아보카도","tags":["qi"],"effect":"補中益気","institutionUrl":"https://www.npoany.org/ingredient/detail_7.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"아보카도는 신대륙 작물: 고전 명칭 억지 연결 금지.","sourceLink":"직접","category":"과일","basePriority":4},{"id":"FY-010","name":"시금치","tags":["blood"],"effect":"養血潤燥","institutionUrl":"https://www.npoany.org/ingredient/detail_92.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"관련·비교 조문 확보","classicDirect":0,"classicRelated":1,"caution":"通血脈 ≠ 補血·養血; 고전으로 혈 태그 직접 검증 불가.","sourceLink":"직접","category":"채소·뿌리","basePriority":6},{"id":"FY-011","name":"당근","tags":["blood"],"effect":"養血","institutionUrl":"https://www.npoany.org/ingredient/detail_76.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"","sourceLink":"직접","category":"채소·뿌리","basePriority":5},{"id":"FY-012","name":"굴","tags":["blood","yin"],"effect":"滋陰養血","institutionUrl":"https://www.npoany.org/ingredient/detail_21.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"관련·비교 조문 확보","classicDirect":0,"classicRelated":0,"caution":"굴껍데기 약재(牡蠣)와 굴살 음식의 효능을 혼동하면 안 됨.","sourceLink":"직접","category":"수산물","basePriority":2},{"id":"FY-013","name":"오징어","tags":["blood","yin"],"effect":"滋陰養血","institutionUrl":"https://www.npoany.org/ingredient/detail_9.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"관련·비교 조문 확보","classicDirect":0,"classicRelated":0,"caution":"烏賊魚(갑오징어 등)와 현대 일반 오징어 사이 종 동정 필요.","sourceLink":"직접","category":"수산물","basePriority":5},{"id":"FY-014","name":"아몬드","tags":["blood"],"effect":"健脾養血","institutionUrl":"https://www.npoany.org/ingredient/detail_1.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"","sourceLink":"직접","category":"견과·씨앗","basePriority":4},{"id":"FY-015","name":"아스파라거스","tags":["yin"],"effect":"滋陰清熱","institutionUrl":"https://www.npoany.org/ingredient/detail_6.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"","sourceLink":"직접","category":"채소·뿌리","basePriority":2},{"id":"FY-017","name":"치즈","tags":["yin"],"effect":"滋陰止渇","institutionUrl":"https://www.npoany.org/ingredient/detail_67.html","paperUrl":"https://journal.kci.go.kr/jkmc/archive/articlePdf?artiId=ART002048735#page=5","paperLevel":"C 제조형태 불일치","paperName":"홍진임(2015) — 『飮膳正要·食療諸病』의 食治에 관한 硏究","paperCount":1,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"유제품 알레르기 확인","sourceLink":"직접","category":"유제품·달걀","basePriority":3},{"id":"FY-018","name":"대합","tags":["yin"],"effect":"滋陰利水","institutionUrl":"https://www.npoany.org/ingredient/detail_81.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"조개류 알레르기 확인","sourceLink":"직접","category":"수산물","basePriority":2},{"id":"FY-019","name":"게","tags":["yin"],"effect":"滋陰填髄","institutionUrl":"https://www.npoany.org/ingredient/detail_24.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"갑각류 알레르기 확인","sourceLink":"직접","category":"수산물","basePriority":2},{"id":"FY-020","name":"순무","tags":["qi","yin"],"effect":"益気消食 / 滋陰","institutionUrl":"https://www.npoany.org/ingredient/detail_25.html","paperUrl":"https://journal.kci.go.kr/jkmc/archive/articlePdf?artiId=ART002108339#page=6","paperLevel":"C 효능 불일치","paperName":"홍진임(2016) — 脾胃질환의 食治에 관한 小考","paperCount":1,"classicStatus":"관련·비교 조문 확보","classicDirect":0,"classicRelated":1,"caution":"앞선 표의 기 분류 누락 보정","sourceLink":"직접","category":"채소·뿌리","basePriority":4},{"id":"FY-021","name":"강낭콩(콩알)","tags":["yang"],"effect":"温補腎陽","institutionUrl":"https://www.npoany.org/ingredient/detail_12.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"반드시 충분히 익혀 섭취","sourceLink":"직접","category":"콩류","basePriority":2},{"id":"FY-022","name":"호두","tags":["yang"],"effect":"補腎温陽","institutionUrl":"https://www.npoany.org/ingredient/detail_34.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"직접 효능 조문 확보","classicDirect":2,"classicRelated":0,"caution":"견과류 알레르기 확인","sourceLink":"직접","category":"견과·씨앗","basePriority":8},{"id":"FY-023","name":"새우","tags":["qi","yang"],"effect":"補気熄風 / 補腎壮陽","institutionUrl":"https://www.npoany.org/ingredient/detail_18.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"관련·비교 조문 확보","classicDirect":0,"classicRelated":1,"caution":"갑각류 알레르기 확인","sourceLink":"직접","category":"수산물","basePriority":6},{"id":"FY-024","name":"부추","tags":["yang"],"effect":"温陽下気","institutionUrl":"https://www.npoany.org/ingredient/detail_74.html","paperUrl":"https://journal.kci.go.kr/jkmc/archive/articlePdf?artiId=ART001589017#page=9","paperLevel":"C 효능 불일치","paperName":"심현아·송지청·엄동명(2011) — 『食療纂要』中 五菜를 이용한 食治 硏究","paperCount":1,"classicStatus":"직접 효능 조문 확보","classicDirect":1,"classicRelated":0,"caution":"본초강목 익힌 부추 益陽 vs 천금요방 痼冷 환자 섭취 경고.","sourceLink":"직접","category":"채소·뿌리","basePriority":10},{"id":"FY-025","name":"참치","tags":["qi","blood","yang"],"effect":"補気壮陽 / 養血","institutionUrl":"https://www.npoany.org/ingredient/detail_93.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"임산부 등 수은 노출 관련 주의","sourceLink":"직접","category":"수산물","basePriority":1},{"id":"FY-026","name":"정어리","tags":["qi"],"effect":"益気活血","institutionUrl":"https://www.npoany.org/ingredient/detail_11.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"活血은 보혈과 다르므로 혈 미분류","sourceLink":"직접","category":"수산물","basePriority":2},{"id":"FY-027","name":"연어","tags":["qi"],"effect":"補気","institutionUrl":"https://www.npoany.org/ingredient/detail_44.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"","sourceLink":"직접","category":"수산물","basePriority":5},{"id":"FY-028","name":"고등어","tags":["qi","blood"],"effect":"益気養血","institutionUrl":"https://www.npoany.org/ingredient/detail_47.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"","sourceLink":"직접","category":"수산물","basePriority":5},{"id":"FY-029","name":"풋강낭콩(꼬투리)","tags":["qi"],"effect":"益気和中","institutionUrl":"https://www.npoany.org/ingredient/detail_48.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"강낭콩 콩알과 다른 식용 부위 | 원자료 さやいんげん: 풋강낭콩 꼬투리","sourceLink":"직접","category":"채소·뿌리","basePriority":2},{"id":"FY-030","name":"삼치","tags":["qi"],"effect":"峻補益気","institutionUrl":"https://www.npoany.org/ingredient/detail_49.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"","sourceLink":"직접","category":"수산물","basePriority":2},{"id":"FY-031","name":"재첩","tags":["blood"],"effect":"退黄養血","institutionUrl":"https://www.npoany.org/ingredient/detail_52.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"관련·비교 조문 확보","classicDirect":0,"classicRelated":1,"caution":"일본어 しじみ는 바지락이 아닌 재첩류","sourceLink":"직접","category":"수산물","basePriority":3},{"id":"FY-032","name":"넙치","tags":["qi"],"effect":"益気 / 補虚損","institutionUrl":"https://www.npoany.org/ingredient/detail_86.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"ひらめ는 넙치, 일반 가자미와 구별","sourceLink":"직접","category":"수산물","basePriority":2},{"id":"FY-033","name":"포도","tags":["qi"],"effect":"補気安胎","institutionUrl":"https://www.npoany.org/ingredient/detail_88.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"직접 효능 조문 확보","classicDirect":1,"classicRelated":0,"caution":"","sourceLink":"직접","category":"과일","basePriority":9},{"id":"FY-034","name":"파슬리","tags":["blood"],"effect":"養血","institutionUrl":"https://www.npoany.org/ingredient/detail_79.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"","sourceLink":"직접","category":"채소·뿌리","basePriority":2},{"id":"FY-035","name":"땅콩","tags":["blood"],"effect":"養血止血","institutionUrl":"https://www.npoany.org/ingredient/detail_82.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"땅콩 알레르기 확인","sourceLink":"직접","category":"견과·씨앗","basePriority":2},{"id":"FY-037","name":"요구르트","tags":["yin"],"effect":"養陰開胃","institutionUrl":"https://www.npoany.org/ingredient/detail_103.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"유제품 알레르기 확인","sourceLink":"직접","category":"유제품·달걀","basePriority":5},{"id":"FY-039","name":"참마(산마)","tags":["qi","yin"],"effect":"益気養陰","institutionUrl":"https://www.npoany.org/ingredient/detail_102.html","paperUrl":"https://journal.kci.go.kr/jkmc/archive/articlePdf?artiId=ART002048735#page=4","paperLevel":"B 복합 식치방","paperName":"홍진임(2015) — 『飮膳正要·食療諸病』의 食治에 관한 硏究","paperCount":2,"classicStatus":"직접 효능 조문 확보","classicDirect":1,"classicRelated":1,"caution":"強陰이 곧 滋陰·養陰을 뜻하는지 별도 학술 검토.","sourceLink":"직접","category":"채소·뿌리","basePriority":10},{"id":"FY-041","name":"복숭아","tags":["qi"],"effect":"補気生津","institutionUrl":"https://www.npoany.org/ingredient/detail_99.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"","sourceLink":"직접","category":"과일","basePriority":5},{"id":"FY-042","name":"쇠고기","tags":["qi","blood"],"effect":"益気血","institutionUrl":"https://www.npoany.org/ingredient/detail_13.html","paperUrl":"https://journal.kci.go.kr/jkmc/archive/articlePdf?artiId=ART002108339#page=6","paperLevel":"A 효능 직접","paperName":"홍진임(2016) — 脾胃질환의 食治에 관한 小考","paperCount":3,"classicStatus":"직접 효능 조문 확보","classicDirect":1,"classicRelated":0,"caution":"","sourceLink":"직접","category":"육류","basePriority":14},{"id":"FY-043","name":"양고기","tags":["qi"],"effect":"益気 / 補虚損","institutionUrl":"https://www.npoany.org/ingredient/detail_84.html","paperUrl":"https://journal.kci.go.kr/jkmc/archive/articlePdf?artiId=ART002108339#page=7","paperLevel":"A 논문 효능표","paperName":"홍진임(2016) — 脾胃질환의 食治에 관한 小考","paperCount":4,"classicStatus":"직접 효능 조문 확보","classicDirect":3,"classicRelated":1,"caution":"원문상 補陽 표기가 없어 양으로 분류하지 않음","sourceLink":"직접","category":"육류","basePriority":11},{"id":"FY-044","name":"돼지고기","tags":["qi","blood","yin"],"effect":"益気血 / 滋陰潤燥","institutionUrl":"https://www.npoany.org/ingredient/detail_87.html","paperUrl":"https://journal.kci.go.kr/jkmc/archive/articlePdf?artiId=ART001553357#page=2","paperLevel":"C 부위 불일치","paperName":"신재혁·송지청·엄동명(2011) — 『食療纂要』에서 돼지고기를 이용한 食治에 대한 考察","paperCount":3,"classicStatus":"직접 효능 조문 확보","classicDirect":1,"classicRelated":0,"caution":"豬肉 조문에서 보신기 외에도 장기 섭취 경고.","sourceLink":"직접","category":"육류","basePriority":10},{"id":"FY-045","name":"피조개","tags":["blood"],"effect":"養血潤膚","institutionUrl":"https://www.npoany.org/ingredient/detail_2.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"고전 교차검증 미완료","classicDirect":0,"classicRelated":0,"caution":"패류 식품 안전 주의","sourceLink":"직접","category":"수산물","basePriority":2},{"id":"FY-046","name":"달걀","tags":["blood","yin"],"effect":"養血安胎 / 滋陰潤燥","institutionUrl":"https://www.npoany.org/ingredient/detail_37.html","paperUrl":"https://journal.kci.go.kr/jkmc/archive/articlePdf?artiId=ART001589011#page=3","paperLevel":"C 복합 식치방 부재료","paperName":"홍윤정·송지청·금경수·이시형(2011) — 『食療纂要』 中 닭고기를 이용한 食治에 대한 硏究","paperCount":2,"classicStatus":"직접 효능 조문 확보","classicDirect":2,"classicRelated":0,"caution":"달걀 알레르기 확인","sourceLink":"직접","category":"유제품·달걀","basePriority":10},{"id":"FY-047","name":"닭고기","tags":["qi"],"effect":"温中益気","institutionUrl":"https://www.npoany.org/ingredient/detail_75.html","paperUrl":"https://journal.kci.go.kr/jkmc/archive/articlePdf?artiId=ART002108339#page=7","paperLevel":"A 논문 효능표","paperName":"홍진임(2016) — 脾胃질환의 食治에 관한 小考","paperCount":4,"classicStatus":"직접 효능 조문 확보","classicDirect":1,"classicRelated":1,"caution":"温中(속을 따뜻하게 함)과 補陽 구별","sourceLink":"직접","category":"육류","basePriority":14},{"id":"FY-048","name":"검은깨","tags":["blood"],"effect":"補益精血","institutionUrl":"https://www.npoany.org/ingredient/detail_36.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"직접 효능 조문 확보","classicDirect":1,"classicRelated":1,"caution":"精血 관련 효능이지 단독 補血 표기가 아님","sourceLink":"관련","category":"견과·씨앗","basePriority":9},{"id":"FY-049","name":"연근","tags":["blood"],"effect":"補心生血","institutionUrl":"https://www.npoany.org/ingredient/detail_108.html","paperUrl":"","paperLevel":"미확보","paperName":"","paperCount":0,"classicStatus":"관련·비교 조문 확보","classicDirect":0,"classicRelated":1,"caution":"生血은 혈 관련이지만 補血·養血과 원문이 다름","sourceLink":"관련","category":"채소·뿌리","basePriority":6}];
+
+const foodAxisMeta = {
+  qi:{name:'기(氣)',short:'기',className:'qi'},
+  blood:{name:'혈(血)',short:'혈',className:'blood'},
+  yin:{name:'음(陰)',short:'음',className:'yin'},
+  yang:{name:'양(陽)',short:'양',className:'yang'}
+};
+
+function foodEvidenceBonus(food){
+  let bonus=Number(food.basePriority||0)*2;
+  const p=String(food.paperLevel||'');
+  const c=String(food.caution||'');
+  if(p.startsWith('C')) bonus-=8;
+  if(p.includes('부위 불일치') || c.includes('부위 불일치')) bonus-=12;
+  if(p.includes('효능 불일치') || c.includes('효능 불일치')) bonus-=8;
+  if(p.includes('제조형태 불일치')) bonus-=8;
+  if(c.includes('수은')) bonus-=8;
+  if(c.includes('종 동정') || c.includes('원료명 불확실')) bonus-=7;
+  return bonus;
+}
+
+function buildFoodGuide(scores){
+  const order=['qi','blood','yin','yang'];
+  const ranked=order.map(k=>({key:k,score:Number(scores[k])})).sort((a,b)=>a.score-b.score);
+  const low=ranked.filter(x=>x.score<70);
+
+  if(!low.length){
+    return {
+      balanced:true,
+      focus:`현재 기·혈·음·양이 모두 70점 이상입니다. 특정 축을 보강하는 식재료를 고르기보다 <b>다양한 식품군을 고르게 먹는 것</b>에 초점을 맞춰보세요.`,
+      balanceItems:[
+        '한 끼에 채소·뿌리류를 한두 가지 이상 곁들여보세요.',
+        '달걀·생선·콩·육류 등 단백질 식품을 식사에 고르게 포함해보세요.',
+        '한 가지 음식에 의존하기보다 제철 식재료를 다양하게 바꿔가며 드세요.'
+      ],
+      items:[]
+    };
+  }
+
+  const lows=Object.fromEntries(low.map(x=>[x.key,x.score]));
+  const uncovered=new Set(Object.keys(lows));
+  const selected=[];
+  const usedCategories=new Set();
+  let candidates=foodEvidenceDb.filter(f=>f.tags.some(t=>Object.prototype.hasOwnProperty.call(lows,t)));
+
+  function scoreFood(food){
+    const matches=food.tags.filter(t=>Object.prototype.hasOwnProperty.call(lows,t));
+    if(!matches.length) return -999999;
+    let score=foodEvidenceBonus(food);
+    for(const k of matches){
+      const deficit=70-lows[k];
+      score += (uncovered.has(k)?55:18) + deficit*1.5;
+    }
+    return score;
+  }
+
+  for(let slot=0;slot<6;slot++){
+    if(!candidates.length) break;
+    let pool=candidates.filter(f=>!usedCategories.has(f.category));
+    if(!pool.length) pool=candidates.slice();
+    pool.sort((a,b)=>scoreFood(b)-scoreFood(a) || Number(b.basePriority||0)-Number(a.basePriority||0));
+    const chosen=pool[0];
+    selected.push(chosen);
+    usedCategories.add(chosen.category);
+    chosen.tags.forEach(t=>uncovered.delete(t));
+    candidates=candidates.filter(f=>f.id!==chosen.id);
+  }
+
+  const first=low[0];
+  const second=low[1];
+  let focus='';
+  if(second && Math.abs(first.score-second.score)<=4){
+    focus=`현재 낮은 축 가운데 <b>${foodAxisMeta[first.key].name} ${first.score}점</b>과 <b>${foodAxisMeta[second.key].name} ${second.score}점</b>을 함께 고려해 식재료를 골랐습니다.`;
+  }else{
+    focus=`현재 가장 낮은 <b>${foodAxisMeta[first.key].name} ${first.score}점</b>을 우선하고, 함께 낮은 축도 반영해 식재료를 골랐습니다.`;
+  }
+
+  return {balanced:false,focus,items:selected};
+}
+
+function foodTagHtml(food){
+  return food.tags.map(k=>`<span class="foodTag ${foodAxisMeta[k].className}">${foodAxisMeta[k].short}</span>`).join('');
+}
+
+function foodReasonText(food,scores){
+  const matched=food.tags
+    .filter(k=>Number(scores[k])<70)
+    .sort((a,b)=>Number(scores[a])-Number(scores[b]))
+    .map(k=>foodAxisMeta[k].name);
+  if(matched.length>=2) return `${matched.join('·')}을 함께 고려한 식재료`;
+  if(matched.length===1) return `${matched[0]}이 낮을 때 참고할 수 있는 식재료`;
+  return '균형 있는 식사에 활용할 수 있는 식재료';
+}
+
+function foodEvidenceLabel(food){
+  const labels=[];
+  const p=String(food.paperLevel||'');
+  const c=String(food.classicStatus||'');
+  if(p.startsWith('A')) labels.push('국내논문 직접·효능표 근거');
+  else if(p.startsWith('B')) labels.push('국내논문 관련 식치 근거');
+  else if(p.startsWith('C')) labels.push('국내논문 보조·주의 근거');
+  if(c.startsWith('직접')) labels.push('고전 직접 조문 확보');
+  else if(c.startsWith('관련')) labels.push('고전 관련·비교 조문');
+  if(!labels.length) labels.push('전통 약선 분류 자료');
+  return labels.join(' · ');
+}
+
+function safeExternalUrl(url){
+  return /^https:\/\//i.test(String(url||'')) ? url : '';
+}
+
+function renderFoodGuide(scores){
+  const plan=buildFoodGuide(scores);
+  const focus=document.getElementById('foodFocus');
+  const primary=document.getElementById('foodGridPrimary');
+  const alternate=document.getElementById('foodGridAlternate');
+  const method=document.getElementById('foodMethod');
+  const evidence=document.getElementById('foodEvidenceList');
+  const evidenceDetails=document.getElementById('foodEvidenceDetails');
+  const title=document.getElementById('foodGuideTitle');
+  if(!focus || !primary || !alternate || !method || !evidence || !title) return;
+
+  focus.innerHTML=plan.focus;
+
+  if(plan.balanced){
+    title.textContent='지금은 특정 보강보다 균형 있는 식사를 유지해보세요';
+    primary.innerHTML=`<div class="foodBalanceGrid" style="grid-column:1/-1">${plan.balanceItems.map(x=>`<div class="foodBalanceItem">${x}</div>`).join('')}</div>`;
+    alternate.innerHTML='';
+    const altHead=document.querySelector('.foodSubheadAlt');
+    if(altHead) altHead.style.display='none';
+    method.innerHTML='<b>식사 팁</b> · 특별한 보양식을 추가하기보다 평소 식사를 규칙적으로 하고 여러 식품군을 고르게 드세요.';
+    evidence.innerHTML='<div class="foodEvidenceItem">균형양호·풀밸런스에서는 특정 기·혈·음·양 식재료를 우선 추천하지 않습니다. 불필요하게 한 축을 “보충”한다는 인상을 피하기 위한 설계입니다.</div>';
+    if(evidenceDetails) evidenceDetails.open=false;
+    return;
+  }
+
+  title.textContent='오늘 식사에 이런 식재료를 활용해볼 수 있어요';
+  const altHead=document.querySelector('.foodSubheadAlt');
+  if(altHead) altHead.style.display='block';
+
+  const primaryItems=plan.items.slice(0,3);
+  const alternateItems=plan.items.slice(3,6);
+
+  primary.innerHTML=primaryItems.map(food=>`
+    <div class="foodCard">
+      <div class="foodName">${food.name}</div>
+      <div class="foodTags">${foodTagHtml(food)}</div>
+      <div class="foodReason">${foodReasonText(food,scores)}</div>
+    </div>
+  `).join('');
+
+  alternate.innerHTML=alternateItems.map(food=>`
+    <div class="foodCard">
+      <div class="foodName">${food.name}</div>
+      <div class="foodTags">${foodTagHtml(food)}</div>
+      <div class="foodReason">${foodReasonText(food,scores)}</div>
+    </div>
+  `).join('');
+
+  method.innerHTML='<b>이렇게 활용해보세요</b> · 여섯 가지를 모두 먹으라는 뜻은 아닙니다. 오늘 먹기 편한 것 1~2가지를 골라 평소 식사에 무리 없이 추가하거나 번갈아 활용해보세요.';
+
+  evidence.innerHTML=plan.items.map(food=>{
+    const paperUrl=safeExternalUrl(food.paperUrl);
+    const institutionUrl=safeExternalUrl(food.institutionUrl);
+    const links=[
+      paperUrl?`<a href="${paperUrl}" target="_blank" rel="noopener">국내논문 보기</a>`:'',
+      institutionUrl?`<a href="${institutionUrl}" target="_blank" rel="noopener">분류 자료 보기</a>`:''
+    ].filter(Boolean).join('');
+    const caution=food.caution?`<div class="foodCaution">주의·메모: ${food.caution}</div>`:'';
+    return `<div class="foodEvidenceItem">
+      <b>${food.name}</b> · ${foodEvidenceLabel(food)}<br>
+      전통 분류 태그: ${food.tags.map(k=>foodAxisMeta[k].name).join(' · ')}${
+        food.effect?`<br>자료의 원문 효능 표기: ${food.effect}`:''
+      }
+      ${caution}
+      <div>${links}</div>
+    </div>`;
+  }).join('') + `
+    <div class="foodEvidenceItem">
+      <b>근거 해석 안내</b><br>
+      이 식재료 데이터는 전통 식치·약선 분류와 국내 논문·고전 문헌 검토 자료를 함께 정리한 것입니다.
+      문헌에 기록된 효능은 현대 임상시험에서 특정 질환에 대한 치료 효과가 입증되었다는 의미와는 다릅니다.
+    </div>`;
+  if(evidenceDetails) evidenceDetails.open=false;
+}
+
+
 function classifyScores(s){
   const vals=[Number(s.qi),Number(s.blood),Number(s.yin),Number(s.yang)];
 
@@ -1351,6 +1708,9 @@ function finish(){
 
   // 가장 낮은 축을 우선해, 오늘 바로 해볼 수 있는 생활 행동 3가지만 제안한다.
   renderLifestylePlan(scores);
+
+  // 같은 점수 구조를 이용해 식재료 3가지를 고르되, 문헌 근거와 식품군 다양성을 함께 고려한다.
+  renderFoodGuide(scores);
 
   const resultTimestamp=new Date().toISOString();
   const resultRecord={
